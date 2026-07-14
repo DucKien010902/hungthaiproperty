@@ -1,0 +1,127 @@
+.section {
+  padding: 26px 0 40px;
+  background: #fff;
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.brandBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 28px;
+}
+
+.line {
+  width: clamp(72px, 9vw, 140px);
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(197, 160, 89, 0),
+    rgba(197, 160, 89, 0.95) 38%,
+    rgba(197, 160, 89, 1)
+  );
+}
+
+.brandBlock .line:last-child {
+  background: linear-gradient(
+    90deg,
+    rgba(197, 160, 89, 1),
+    rgba(197, 160, 89, 0.95) 62%,
+    rgba(197, 160, 89, 0)
+  );
+}
+
+.logoMark {
+  width: 126px;
+  height: 126px;
+  background: center / contain no-repeat url("/Logo-1.png");
+  flex-shrink: 0;
+}
+
+.content {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  max-width: 760px;
+  margin: 0 auto 28px;
+  text-align: center;
+  color: #132238;
+  font-size: clamp(1.5rem, 2.7vw, 2.5rem);
+  line-height: 1.18;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+.description {
+  margin: 22px auto 0;
+  color: #475569;
+  font-size: 1.06rem;
+  font-weight: 500;
+  line-height: 1.9;
+}
+
+.media {
+  margin-top: 34px;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 30px 60px rgba(19, 34, 56, 0.14);
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  object-fit: cover;
+}
+
+.caption {
+  margin: 0;
+  padding: 14px 24px 18px;
+  background: #fff;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 30px 60px rgba(19, 34, 56, 0.14);
+  text-align: center;
+  color: #c5a059;
+  font-size: 0.78rem;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.18em;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 18px 0 28px;
+  }
+
+  .brandBlock {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .logoMark {
+    width: 92px;
+    height: 92px;
+  }
+
+  .description {
+    font-size: 0.98rem;
+    line-height: 1.78;
+  }
+
+  .media {
+    margin-top: 26px;
+    border-radius: 22px 22px 0 0;
+  }
+
+  .caption {
+    padding: 12px 16px 16px;
+    border-radius: 0 0 22px 22px;
+  }
+}

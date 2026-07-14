@@ -1,0 +1,228 @@
+.footer {
+  background:
+    linear-gradient(180deg, rgba(100, 95, 91, 0.98), rgba(78, 74, 71, 1)),
+    #5b5754;
+  color: #fff;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(320px, 1.15fr) minmax(0, 1.45fr);
+  gap: 48px;
+  padding-top: 42px;
+  padding-bottom: 44px;
+}
+
+.brandBlock {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.brandBlockNoLogo {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  background: center / contain no-repeat url("/Logo-1.png");
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.16));
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contactLabelRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contactIcon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(197, 160, 89, 0.15);
+  color: var(--color-accent);
+  font-size: 0.92rem;
+  line-height: 1;
+}
+
+.contactLabel {
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.contactLines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 34px;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.linksArea {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  align-content: start;
+  padding-top: 4px;
+}
+
+.groupTitle {
+  margin: 0 0 16px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.linkList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footerLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 0.98rem;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.footerLink::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  background: var(--color-accent);
+  border-radius: 1px;
+}
+
+.footerLink:hover {
+  color: #f7e3b3;
+  transform: translateX(2px);
+}
+
+.socialList {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.socialLink {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.socialLink:hover {
+  transform: translateY(-2px);
+  color: #fffdf8;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.18);
+}
+
+.socialFacebook {
+  background: #1877f2;
+  border-color: #1877f2;
+}
+
+.socialYoutube {
+  background: #ff0000;
+  border-color: #ff0000;
+}
+
+.socialZalo {
+  background: linear-gradient(180deg, #1988ff 0%, #005fe8 100%);
+  border-color: #0b74ff;
+}
+
+.zaloBadge {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+@media (max-width: 1080px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .linksArea {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .inner {
+    gap: 28px;
+    padding-top: 34px;
+    padding-bottom: 36px;
+  }
+
+  .brandBlock {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .logo {
+    width: 108px;
+    height: 128px;
+  }
+
+  .linksArea {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .socialList {
+    flex-wrap: wrap;
+  }
+
+  .contactLines {
+    padding-left: 0;
+  }
+}

@@ -1,0 +1,132 @@
+.section {
+  padding: 72px 0 78px;
+  background:
+    radial-gradient(circle at top, rgba(197, 160, 89, 0.1), transparent 36%),
+    linear-gradient(180deg, #fffdf8 0%, #ffffff 100%);
+}
+
+.headingWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.heading {
+  margin: 0;
+  color: #1c1c1c;
+  font-size: clamp(1.35rem, 2.15vw, 2.15rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+.lead {
+  position: relative;
+  width: fit-content;
+  max-width: 42ch;
+  margin: 0 auto 28px;
+  padding: 0 3rem;
+  color: var(--color-accent);
+  font-size: clamp(0.96rem, 1.45vw, 1.16rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.015em;
+  text-align: center;
+}
+
+.lead::before,
+.lead::after {
+  position: absolute;
+  top: 0.02em;
+  width: 1em;
+  color: rgba(197, 160, 89, 0.7);
+  font-size: clamp(2.3rem, 4vw, 3.6rem);
+  font-weight: 800;
+  line-height: 0.8;
+  pointer-events: none;
+  text-align: center;
+}
+
+.lead::before {
+  left: -0.6rem;
+  content: "“";
+}
+
+.lead::after {
+  right: -0.12rem;
+  content: "”";
+}
+
+.frame {
+  overflow: hidden;
+  border: 2px solid var(--color-accent);
+  border-radius: 15px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.video {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: transparent;
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px 20px;
+  background: rgba(255, 255, 255, 0.98);
+  color: #253041;
+}
+
+.captionTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.captionText {
+  margin: 6px 0 0;
+  color: #5c6778;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.badge {
+  align-self: flex-start;
+  flex-shrink: 0;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(197, 160, 89, 0.14);
+  color: var(--color-accent-dark);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 56px 0 60px;
+  }
+
+  .lead {
+    margin-bottom: 22px;
+    padding: 0 2rem;
+    font-size: 0.94rem;
+  }
+
+  .frame {
+    border-width: 4px;
+    border-radius: 16px;
+  }
+
+  .caption {
+    flex-direction: column;
+    padding: 16px 16px 18px;
+  }
+}

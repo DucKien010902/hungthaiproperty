@@ -1,0 +1,232 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: 48px 24px 64px;
+  background:
+    radial-gradient(circle at top left, rgba(197, 160, 89, 0.14), transparent 26%),
+    linear-gradient(180deg, #f7f2e8 0%, #f5efe6 52%, #f8f6f1 100%);
+}
+
+.overlay {
+  display: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+  gap: 30px;
+  align-items: stretch;
+  width: min(90%);
+  margin: 0 auto;
+}
+
+.mapCard,
+.formCard {
+  min-width: 0;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(24, 35, 53, 0.08);
+}
+
+.mapCard {
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+  box-shadow: 0 24px 46px rgba(29, 24, 14, 0.12);
+}
+
+.mapFrame {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  border: 0;
+  display: block;
+}
+
+.formCard {
+  padding: 18px 18px 20px;
+  box-shadow: 0 26px 52px rgba(29, 24, 14, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.contactCards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.contactCard {
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fffdfa 0%, #f8f2e8 100%);
+  border: 1px solid rgba(197, 160, 89, 0.18);
+}
+
+.contactCardLabel {
+  display: block;
+  margin-bottom: 6px;
+  color: #9c7a34;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.contactCardValue {
+  display: block;
+  color: #182335;
+  font-size: 1.02rem;
+  line-height: 1.4;
+  font-weight: 800;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.row + .row,
+.fullWidth,
+.contactMeta,
+.actionWrap {
+  margin-top: 10px;
+}
+
+.field {
+  display: block;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1px solid rgba(27, 37, 54, 0.12);
+  border-radius: 16px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #1f2f45;
+  font: inherit;
+  box-shadow: 0 10px 20px rgba(29, 24, 14, 0.06);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #8a857c;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: rgba(168, 134, 71, 0.58);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.14);
+}
+
+.field textarea {
+  min-height: 86px;
+  resize: vertical;
+}
+
+.actionWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.submitButton {
+  min-width: 168px;
+  min-height: 42px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0 24px;
+  background: var(--color-accent);
+  color: #fff;
+  font: inherit;
+  font-size: 0.96rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  box-shadow: 0 16px 24px rgba(84, 58, 8, 0.2);
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  background: var(--color-accent-dark);
+  box-shadow: 0 20px 30px rgba(84, 58, 8, 0.24);
+  filter: saturate(1.05);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 980px) {
+  .section {
+    padding: 36px 18px 50px;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .mapCard,
+  .mapFrame {
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 26px 12px 40px;
+  }
+
+  .formCard {
+    padding: 16px 14px 18px;
+    border-radius: 22px;
+  }
+
+  .contactCards {
+    grid-template-columns: 1fr;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .mapCard,
+  .mapFrame {
+    min-height: 200px;
+  }
+
+  .actionWrap {
+    justify-content: stretch;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+}

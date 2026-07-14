@@ -1,0 +1,106 @@
+.section {
+  padding: 22px 0 48px;
+  background:
+    radial-gradient(circle at top left, rgba(197, 160, 89, 0.09), transparent 28%),
+    #fff;
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.content {
+  max-width: none;
+  margin: 0 auto;
+}
+
+.heading {
+  max-width: 820px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: #132238;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.subtitle {
+  margin: 12px 0 0 !important; /* tăng khoảng cách với heading */
+  color: #d2a44c;
+  font-size: clamp(1.6rem, 2.2vw, 1.8rem) !important; /* to hơn */
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1.7;
+  letter-spacing: 0.015em;
+  max-width: 820px;
+}
+
+.content p {
+  margin: 0;
+  color: #475569;
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.95;
+}
+
+.content p + p {
+  margin-top: 18px;
+}
+
+.media {
+  margin-top: 34px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 28px 56px rgba(19, 34, 56, 0.12);
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  object-fit: cover;
+}
+
+.caption {
+  margin: 14px 0 0;
+  text-align: center;
+  color: #c5a059;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 14px 0 34px;
+  }
+
+  .heading {
+    margin-bottom: 22px;
+  }
+
+  .title {
+    font-size: clamp(1.72rem, 8vw, 2.3rem);
+  }
+
+  .subtitle {
+    margin-top: 20px;
+    font-size: 1.16rem;
+  }
+
+  .content p {
+    font-size: 0.97rem;
+    line-height: 1.82;
+  }
+
+  .media {
+    margin-top: 24px;
+    border-radius: 22px;
+  }
+}

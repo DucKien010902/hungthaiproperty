@@ -1,0 +1,61 @@
+.banner {
+  position: relative;
+  overflow: hidden;
+  padding: 132px 0 68px;
+  background:
+    linear-gradient(180deg, rgba(14, 19, 27, 0.55), rgba(14, 19, 27, 0.4)),
+    linear-gradient(90deg, rgba(197, 160, 89, 0.26), rgba(197, 160, 89, 0.12)),
+    url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80")
+      center/cover no-repeat;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.16), transparent 28%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent 40%);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.15vw, 2.15rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.description {
+  max-width: 680px;
+  margin: 18px auto 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 640px) {
+  .banner {
+    padding: 104px 0 52px;
+  }
+
+  .description {
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+}

@@ -1,0 +1,265 @@
+.section {
+  padding: 72px 0 76px;
+  background: #ffffff;
+  --intro-accent: #c5a059;
+  overflow: hidden;
+}
+
+.headingWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 28px;
+  will-change: transform, opacity, filter;
+}
+
+.headingWrap::before,
+.headingWrap::after {
+  content: "";
+  width: clamp(72px, 9vw, 140px);
+  height: 2px;
+  flex-shrink: 0;
+}
+
+.headingWrap::before {
+  background: linear-gradient(
+    90deg,
+    rgba(197, 160, 89, 0),
+    rgba(197, 160, 89, 0.95) 38%,
+    rgba(197, 160, 89, 1)
+  );
+}
+
+.headingWrap::after {
+  background: linear-gradient(
+    90deg,
+    rgba(197, 160, 89, 1),
+    rgba(197, 160, 89, 0.95) 62%,
+    rgba(197, 160, 89, 0)
+  );
+}
+
+.heading {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.15vw, 2.15rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #1c1c1c;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid rgba(28, 28, 28, 0.12);
+  background: #ffffff;
+}
+
+.summary {
+  max-width: 840px;
+  margin: 28px auto 32px;
+  padding: 8px 0 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+}
+
+.summaryEyebrow {
+  margin: 0;
+  color: var(--intro-accent);
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.summaryText {
+  margin: 12px 0 0;
+  color: #3f4752;
+  font-size: clamp(1.0rem, 1.3vw, 1.2rem);
+  line-height: 1.8;
+  text-align: left;
+}
+
+.summaryHighlight {
+  color: var(--intro-accent);
+  font-weight: 800;
+}
+
+.card {
+  min-height: 378px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 22px 28px 20px;
+  border-bottom: 1px solid rgba(28, 28, 28, 0.12);
+  text-align: center;
+
+  background: #ffffff;
+
+  will-change: transform, opacity, filter;
+
+  transition:
+    box-shadow 320ms ease,
+    background 320ms ease;
+}
+
+.card + .card {
+  border-left: 1px solid rgba(28, 28, 28, 0.12);
+}
+
+.card:hover {
+  box-shadow: 0 24px 48px rgba(38, 27, 10, 0.12);
+  background: #ffffff;
+}
+
+.iconWrap {
+  width: 98px;
+  height: 98px;
+  display: grid;
+  place-items: center;
+}
+
+.iconImage {
+  width: 78px;
+  height: 78px;
+  display: block;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  filter: sepia(1) saturate(2.3) hue-rotate(2deg) brightness(0.86);
+
+  transition:
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 350ms ease;
+}
+
+.iconVector {
+  width: 78px;
+  height: 78px;
+  display: block;
+  color: #c5a059;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+
+  transition:
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 350ms ease,
+    filter 350ms ease;
+}
+
+.card:hover .iconImage {
+  transform: translateY(-5px) scale(1.06);
+
+  filter: sepia(1) saturate(2.5) hue-rotate(2deg) brightness(0.92);
+}
+
+.card:hover .iconVector {
+  transform: translateY(-5px) scale(1.06);
+  color: #b89148;
+  filter: drop-shadow(0 10px 18px rgba(197, 160, 89, 0.22));
+}
+
+.title {
+  margin: 4px 0 0;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #222222;
+}
+
+.description {
+  margin: 18px 0 0;
+  color: #4d4d4d;
+  font-size: 1rem;
+  line-height: 1.75;
+  flex: 1;
+  text-align: left;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card:nth-child(3),
+  .card:nth-child(4) {
+    border-top: 1px solid rgba(28, 28, 28, 0.12);
+  }
+
+  .card:nth-child(3) {
+    border-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 54px 0 58px;
+  }
+
+  .headingWrap {
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .summary {
+    margin: 20px auto 24px;
+    padding: 6px 0 0;
+  }
+
+  .summaryEyebrow {
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+  }
+
+  .summaryText {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: start;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: auto;
+    padding: 18px 18px 24px;
+  }
+
+  .card + .card,
+  .card:nth-child(3),
+  .card:nth-child(4) {
+    border-left: 0;
+    border-top: 0;
+  }
+
+  .iconWrap {
+    width: 88px;
+    height: 88px;
+  }
+
+  .iconImage {
+    width: 70px;
+    height: 70px;
+  }
+
+  .iconVector {
+    width: 70px;
+    height: 70px;
+  }
+
+  .description {
+    font-size: 0.96rem;
+  }
+}

@@ -1,0 +1,356 @@
+.section {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      rgba(197, 160, 89, 0.84),
+      rgba(197, 160, 89, 0.84)
+    ),
+    center / cover no-repeat
+      url("https://res.cloudinary.com/da6f4dmql/image/upload/v1783311267/D%E1%BB%B1_%C3%A1n_The_Sola_Park_jwudqx.jpg");
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(33, 24, 6, 0.1)
+    ),
+    radial-gradient(
+      circle at top,
+      rgba(255, 255, 255, 0.2),
+      transparent 35%
+    );
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-width: 0;
+  padding-top: 58px;
+  padding-bottom: 46px;
+}
+
+.heading {
+  margin: 0 0 28px;
+  text-align: center;
+  font-size: clamp(1.35rem, 2.15vw, 2.15rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #1d1d1d;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.scroller {
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  /*
+    Animation đã được điều khiển bằng requestAnimationFrame,
+    không dùng smooth mặc định của trình duyệt nữa.
+  */
+  scroll-behavior: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.grid {
+  display: grid;
+
+  /*
+    Mỗi card chiếm đúng 1/3 chiều rộng của vùng slider.
+    Không dùng width: max-content.
+  */
+  grid-auto-flow: column;
+  grid-auto-columns: calc(100% / 2);
+
+  width: 100%;
+  min-width: 100%;
+
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+}
+
+.card {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(255, 255, 255, 1);
+  scroll-snap-align: start;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.card + .card {
+  border-left: 1px solid rgba(25, 27, 31, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 36px rgba(19, 34, 56, 0.12);
+}
+
+.cardImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  flex-shrink: 0;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  min-width: 0;
+  min-height: 176px;
+  padding: 14px 32px 16px;
+  box-sizing: border-box;
+
+  background: rgba(255, 255, 255, 0.95);
+  overflow: hidden;
+}
+
+.cardTitle {
+  display: block;
+  margin: 0;
+
+  text-align: center;
+  font-size: 1.12rem;
+  line-height: 1.35;
+  font-weight: 800;
+  color: var(--color-accent-dark);
+}
+
+.cardMetaList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  min-width: 0;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.cardMetaItem {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #596579;
+  font-size: 0.96rem;
+  line-height: 1.62;
+  font-weight: 600;
+  text-align: left;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.cardMetaItem strong {
+  color: #1f2f45;
+  font-weight: 800;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+
+  width: 54px;
+  height: 54px;
+
+  display: grid;
+  place-items: center;
+
+  border: 0;
+  border-radius: 999px;
+  background: rgba(35, 35, 35, 0.38);
+  color: #fff;
+
+  font-size: 2rem;
+  line-height: 1;
+
+  backdrop-filter: blur(8px);
+  transform: translateY(-50%);
+  cursor: pointer;
+
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.navButton:hover {
+  background: rgba(197, 160, 89, 0.9);
+  transform: translateY(-50%) scale(1.04);
+}
+
+.prevButton {
+  left: 28px;
+}
+
+.nextButton {
+  right: 28px;
+}
+
+.actionWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 210px;
+  min-height: 48px;
+  padding: 0 24px;
+
+  border-radius: 8px;
+  background: #f2bf4c;
+  color: #fff;
+
+  font-size: 0.98rem;
+  font-weight: 800;
+
+  box-shadow: 0 12px 20px rgba(84, 58, 8, 0.26);
+
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease;
+}
+
+.actionButton:hover {
+  transform: translateY(-2px);
+  background: #e0ae3f;
+}
+
+/* Tablet: 2 card trên một màn hình */
+@media (max-width: 980px) {
+  .section {
+    min-height: auto;
+  }
+
+  .inner {
+    padding-top: 48px;
+    padding-bottom: 40px;
+  }
+
+  .grid {
+    grid-auto-columns: 50%;
+  }
+
+  .prevButton {
+    left: 16px;
+  }
+
+  .nextButton {
+    right: 16px;
+  }
+}
+
+/* Mobile: 1 card trên một màn hình */
+@media (max-width: 640px) {
+  .inner {
+    padding-top: 40px;
+    padding-bottom: 32px;
+  }
+
+  .heading {
+    margin-bottom: 22px;
+  }
+
+  .grid {
+    grid-auto-columns: 100%;
+  }
+
+  .cardBody {
+    min-height: 150px;
+    padding: 12px 12px 14px;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .cardMetaItem {
+    font-size: 0.88rem;
+    line-height: 1.56;
+  }
+
+  .navButton {
+    width: 44px;
+    height: 44px;
+    font-size: 1.6rem;
+  }
+
+  .prevButton {
+    left: 12px;
+  }
+
+  .nextButton {
+    right: 12px;
+  }
+
+  .actionButton {
+    min-width: 186px;
+  }
+}
+
+.scroller {
+  overflow: hidden;
+}
+
+.grid {
+  display: flex;
+  align-items: stretch;
+  width: auto;
+  min-width: 0;
+  will-change: transform;
+}
+
+.card {
+  flex: 0 0 auto;
+}
+
+.navButton {
+  transition:
+    opacity 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.navButton:disabled {
+  opacity: 0.42;
+  cursor: default;
+}

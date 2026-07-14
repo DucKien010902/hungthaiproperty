@@ -1,0 +1,181 @@
+.section {
+  padding: 22px 0 72px;
+  background: #fff;
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.header {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: #132238;
+  font-size: clamp(1.5rem, 2.7vw, 2.5rem);
+  line-height: 1.18;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 28px;
+  row-gap: 42px;
+  margin-top: 34px;
+}
+
+.card {
+  position: relative;
+  padding: 52px 28px 28px;
+  border: 2px solid rgba(197, 160, 89, 0.82);
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 24px 48px rgba(19, 34, 56, 0.08);
+  overflow: visible;
+}
+
+.cardTop {
+  grid-column: 1 / -1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.iconWrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: #fff;
+}
+
+.icon {
+  width: 54px;
+  height: 54px;
+  display: block;
+  color: #c5a059;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+
+.cardTitle {
+  margin: 0;
+  text-align: center;
+  color: #132238;
+  font-size: 1.18rem;
+  font-weight: 800;
+}
+
+.cardBody,
+.valueGroups {
+  margin-top: 18px;
+}
+
+.cardBody p,
+.valueGroup p {
+  margin: 0;
+  color: #475569;
+  font-size: 0.98rem;
+  font-weight: 500;
+  line-height: 1.82;
+}
+
+.cardBody p + p,
+.valueGroup p + p,
+.valueGroup + .valueGroup {
+  margin-top: 12px;
+}
+
+.valueGroup h4 {
+  margin: 0 0 8px;
+  color: #132238;
+  font-size: 0.96rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.media {
+  margin-top: 36px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 28px 56px rgba(19, 34, 56, 0.12);
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  object-fit: cover;
+}
+
+.caption {
+  margin: 14px 0 0;
+  text-align: center;
+  color: #c5a059;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .cardTop {
+    grid-column: auto;
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 12px 0 54px;
+  }
+
+  .cards {
+    row-gap: 22px;
+    column-gap: 22px;
+    margin-top: 26px;
+  }
+
+  .card {
+    padding: 42px 18px 22px;
+    border-radius: 22px;
+  }
+
+  .iconWrap {
+    width: 58px;
+    height: 58px;
+  }
+
+  .icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .cardBody p,
+  .valueGroup p {
+    font-size: 0.94rem;
+    line-height: 1.76;
+  }
+
+  .media {
+    margin-top: 26px;
+    border-radius: 22px;
+  }
+}
