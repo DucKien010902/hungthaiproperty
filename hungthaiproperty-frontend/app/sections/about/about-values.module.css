@@ -28,7 +28,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 28px;
   row-gap: 42px;
-  margin-top: 34px;
+  margin-top: 48px;
 }
 
 .card {
@@ -41,9 +41,9 @@
   overflow: visible;
 }
 
-.cardTop {
+.cardBottom {
   grid-column: 1 / -1;
-  max-width: 720px;
+  max-width: none;
   margin: 0 auto;
 }
 
@@ -89,8 +89,8 @@
 .valueGroup p {
   margin: 0;
   color: #475569;
-  font-size: 0.98rem;
-  font-weight: 500;
+  font-size: 1.04rem;
+  font-weight: 600;
   line-height: 1.82;
 }
 
@@ -136,7 +136,7 @@
     grid-template-columns: 1fr;
   }
 
-  .cardTop {
+  .cardBottom {
     grid-column: auto;
     max-width: none;
   }
@@ -170,7 +170,7 @@
 
   .cardBody p,
   .valueGroup p {
-    font-size: 0.94rem;
+    font-size: 0.99rem;
     line-height: 1.76;
   }
 

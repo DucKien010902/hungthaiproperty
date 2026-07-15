@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import styles from "./about-organization-section.module.css";
 
-const aboutOrganizationImage = "https://res.cloudinary.com/da6f4dmql/image/upload/v1783672320/ChatGPT_Image_14_55_29_10_thg_7_2026_hvyeoe.png";
+const aboutOrganizationImage = "https://res.cloudinary.com/da6f4dmql/image/upload/v1784083236/ChatGPT_Image_09_06_22_15_thg_7_2026_qkvks2.png";
 
 export function AboutOrganizationSection() {
   return (
@@ -20,24 +20,9 @@ export function AboutOrganizationSection() {
           <h2 className={styles.title}>Sơ đồ tổ chức</h2>
 
           <p>
-            Bộ máy tổ chức của Nam Sơn Land được xây dựng trên nền tảng quản trị
-            hiện đại, tinh gọn và hiệu quả, phản ánh định hướng phát triển bền
-            vững của một đơn vị phân phối bất động sản chuyên nghiệp.Cơ cấu tổ chức được thiết lập theo nguyên tắc phân tầng rõ ràng,
-            phân quyền minh bạch và phối hợp linh hoạt giữa các khối chức năng
-            trọng yếu, bao gồm Kinh doanh, Marketing, Vận hành và Dự
-            án/Sản phẩm.
-          </p>
-
-          <p>
-            Mỗi bộ phận giữ một vai trò chiến lược trong chuỗi giá trị hoạt
-            động, từ nghiên cứu sản phẩm, triển khai truyền thông, phát triển
-            nguồn khách hàng, tư vấn bán hàng đến chăm sóc và đồng hành cùng
-            khách hàng sau giao dịch.Thông qua mô hình tổ chức khoa học, Nam Sơn Land hướng tới việc
-            nâng cao năng lực vận hành, tối ưu hiệu suất đội ngũ, gia tăng chất
-            lượng dịch vụ và khẳng định vị thế thương hiệu trên thị trường bất
-            động sản. Đây cũng là nền tảng quan trọng giúp doanh nghiệp thích
-            ứng linh hoạt, phát triển ổn định và mở rộng quy mô trong tương
-            lai.
+Sơ đồ tổ chức <span className={styles.companyName}>
+              Hưng Thái Property
+            </span>{" "} được xây dựng theo mô hình quản trị tinh gọn, phân cấp rõ ràng và vận hành chuyên nghiệp. Dưới sự định hướng của Hội đồng quản trị và Tổng Giám đốc, các khối chức năng phối hợp chặt chẽ, bảo đảm hiệu quả trong kinh doanh, tài chính, truyền thông, nhân sự và quản lý dự án. Cơ cấu này tạo nền tảng vững chắc cho sự minh bạch, linh hoạt và phát triển bền vững của doanh nghiệp. 
           </p>
         </div>
 

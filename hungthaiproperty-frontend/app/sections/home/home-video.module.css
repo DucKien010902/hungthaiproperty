@@ -27,13 +27,19 @@
   max-width: 42ch;
   margin: 0 auto 28px;
   padding: 0 3rem;
-  color: var(--color-accent);
+  color: #caa04a;
   font-size: clamp(0.96rem, 1.45vw, 1.16rem);
   font-style: italic;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0.015em;
   text-align: center;
+  text-shadow: 0 1px 16px rgba(197, 160, 89, 0.14);
+}
+
+.leadHighlight {
+  color: #d7ad57;
+  font-weight: 800;
 }
 
 .lead::before,

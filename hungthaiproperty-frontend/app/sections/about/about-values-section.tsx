@@ -8,7 +8,7 @@ import styles from "./about-values.module.css";
 
 type AboutTextCard = {
   title: string;
-  iconKey: "vision-goal" | "mission-handshake";
+  iconKey: "vision-goal" | "mission-handshake" | "core-values-queen";
   paragraphs: string[];
 };
 
@@ -33,44 +33,26 @@ const valueCards: AboutValueCard[] = [
     title: "Tầm nhìn",
     iconKey: "vision-goal" as const,
     paragraphs: [
-      "Với tầm nhìn đến năm 2030, Nam Sơn Land hướng tới trở thành thương hiệu bất động sản uy tín hàng đầu trên thị trường Việt Nam; là đối tác bền vững, đáng tin cậy của các nhà đầu tư; là người bạn đồng hành dài lâu và chân thành cùng khách hàng trên hành trình xây dựng tổ ấm.",
+      "Trở thành thương hiệu đầu tư và phát triển bất động sản được tin tưởng lựa chọn, kiến tạo những không gian sống và không gian thương mại mang giá trị bền vững – nơi con người an cư lạc nghiệp và cộng đồng cùng phát triển thịnh vượng.",
     ],
   },
   {
     title: "Sứ mệnh",
     iconKey: "mission-handshake" as const,
     paragraphs: [
-      "Trải qua nhiều khó khăn và thử thách, Nam Sơn Land nhận ra rằng: Sức mạnh và sự phát triển của thương hiệu bắt nguồn từ việc luôn đặt khách hàng ở vị trí trung tâm trong mọi hoạt động.",
-      "Với động lực ấy, Nam Sơn Land không ngừng theo đuổi sứ mệnh cung cấp những sản phẩm và dịch vụ bất động sản minh bạch, chất lượng, mang giá trị thực, góp phần định hình các chuẩn mực mới cho thị trường.",
-      "Để hiện thực hóa mục tiêu đó, Nam Sơn Land lấy chính trực làm nền tảng, không ngừng đổi mới và hợp tác, phát triển bền vững, đồng thời cam kết đồng hành cùng khách hàng ở cả trước, trong và sau khi sử dụng dịch vụ nhằm mang lại trải nghiệm trọn vẹn, đóng góp tích cực cho cộng đồng.",
+      "Mang lại giá trị đích thực cho khách hàng và cộng đồng thông qua việc phát triển những sản phẩm bất động sản thực chất – nơi pháp lý minh bạch, quy hoạch hợp lý và chất lượng bền vững hội tụ, phục vụ nhu cầu an cư, kinh doanh và đầu tư dài hạn.",
+      
     ],
   },
   {
     title: "Giá trị cốt lõi",
     iconKey: "core-values-queen" as const,
-    values: [
-      {
-        label: "CHÍNH TRỰC",
-        lines: [
-          "Công bố thông tin rõ ràng, báo cáo tiến độ minh bạch.",
-          "Trung thực trong giao tiếp và hành động, giữ vững uy tín với khách hàng, đối tác.",
-        ],
-      },
-      {
-        label: "ĐỔI MỚI & SÁNG TẠO",
-        lines: [
-          "Liên tục cập nhật các thông tin mới trên thị trường và nắm bắt nhanh chóng nhu cầu.",
-          "Sáng tạo và ứng dụng linh hoạt những giải pháp mới nhằm nâng cao chất lượng dịch vụ.",
-        ],
-      },
-      {
-        label: "TRÁCH NHIỆM",
-        lines: [
-          "Tận tâm nghiên cứu, tìm hiểu thông tin, thấu hiểu tường tận từng dự án.",
-          "Đảm bảo đầy đủ quyền lợi, giá trị đã cam kết với đối tác, khách hàng.",
-          "Tích cực đóng góp vào sự thịnh vượng chung cho cộng đồng.",
-        ],
-      },
+    paragraphs: [
+      "1. Giá trị thực Chúng tôi tin rằng giá trị của một dự án bất động sản không nằm ở lời quảng bá, mà ở chất lượng thực tế và khả năng đáp ứng nhu cầu sống lâu dài của cư dân.",
+      "2. Trách nhiệm Mỗi cam kết của Hưng Thái Property với khách hàng, đối tác và cộng đồng đều được thực hiện với tinh thần trách nhiệm cao nhất, từ pháp lý đến chất lượng công trình.",
+      "3. Chất lượng Chúng tôi kiểm soát chặt chẽ chất lượng trong từng khâu phát triển dự án – từ quy hoạch, thiết kế đến thi công và bàn giao.",
+      "4. Đồng hành Hưng Thái Property xác định mối quan hệ với khách hàng và đối tác không kết thúc sau giao dịch, mà tiếp tục đồng hành trong suốt quá trình vận hành và khai thác giá trị.",
+      "5. Phát triển bền vững Mỗi dự án được hoạch định với tầm nhìn dài hạn, hài hòa giữa lợi ích kinh tế, môi trường sống và giá trị cộng đồng.",
     ],
   },
 ];
@@ -94,12 +76,12 @@ export function AboutValuesSection() {
         <div className={styles.cards}>
           {valueCards.map((card, index) => {
             const Icon = siteIcons[card.iconKey];
-            const topCardClass = index === 0 ? styles.cardTop : "";
+            const cardLayoutClass = index === 2 ? styles.cardBottom : "";
 
             return (
               <article
                 key={card.title}
-                className={`${styles.card} ${topCardClass}`.trim()}
+                className={`${styles.card} ${cardLayoutClass}`.trim()}
               >
                 <div className={styles.iconWrap}>
                   <Icon className={styles.icon} />

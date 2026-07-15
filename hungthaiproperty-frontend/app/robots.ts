@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://www.nsland.com.vn/sitemap.xml",
+    sitemap: "https://www.hungthaiproperty.vn/sitemap.xml",
   };
 }

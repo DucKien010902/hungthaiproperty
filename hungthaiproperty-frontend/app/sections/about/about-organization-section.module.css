@@ -25,17 +25,21 @@
 }
 
 .content p {
-  margin: 0;
+  margin: auto;
   color: #475569;
-  font-size: 1.02rem;
-  font-weight: 500;
+  font-size: 1.08rem;
+  font-weight: 600;
   line-height: 1.95;
+  max-width: 90%;
 }
 
 .content p + p {
   margin-top: 18px;
 }
-
+.companyName {
+  color: #c5a059;
+  font-weight: 800;
+}
 .media {
   margin-top: 34px;
   overflow: hidden;
@@ -81,7 +85,7 @@
   }
 
   .content p {
-    font-size: 0.97rem;
+    font-size: 1.02rem;
     line-height: 1.82;
   }
 

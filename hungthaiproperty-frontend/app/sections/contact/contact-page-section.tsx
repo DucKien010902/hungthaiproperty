@@ -23,13 +23,13 @@ export function ContactPageSection() {
           <div className={styles.contactCards}>
             <div className={styles.contactCard}>
               <span className={styles.contactCardLabel}>Hotline</span>
-              <strong className={styles.contactCardValue}>093 861 9339</strong>
+              <strong className={styles.contactCardValue}>097 727 5146</strong>
             </div>
 
             <div className={styles.contactCard}>
               <span className={styles.contactCardLabel}>Email</span>
               <strong className={styles.contactCardValue}>
-                contact@namsonland.vn
+                hungthaipropertyjsc@gmail.com
               </strong>
             </div>
           </div>

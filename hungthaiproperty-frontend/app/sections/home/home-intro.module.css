@@ -180,9 +180,11 @@
 
 .description {
   margin: 18px 0 0;
-  color: #4d4d4d;
-  font-size: 1rem;
-  line-height: 1.75;
+  color: #475569;
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.9;
+  text-align: left;
   flex: 1;
   text-align: left;
 }

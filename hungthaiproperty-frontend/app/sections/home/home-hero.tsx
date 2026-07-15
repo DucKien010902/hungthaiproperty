@@ -8,15 +8,15 @@ const SLIDE_DURATION = 12000;
 const slides = [
   {
     image:
-      "https://res.cloudinary.com/da6f4dmql/image/upload/v1783661216/3_2_qp3uj2.png",
+      "https://res.cloudinary.com/da6f4dmql/image/upload/v1784091424/TTTM_C%C3%82Y_C%E1%BB%8C_cfp5ce.png",
   },
   {
     image:
-      "https://res.cloudinary.com/da6f4dmql/image/upload/v1783675446/M%E1%BA%AAU_NH%C3%80-09_ok2l6l.png",
+      "https://res.cloudinary.com/da6f4dmql/image/upload/v1783659171/M%E1%BA%AAU_NH%C3%80-08_e4ejhc.png",
   },
   {
     image:
-      "https://res.cloudinary.com/da6f4dmql/image/upload/v1783414480/Vi-tri-du-an-Lumi-Hanoi-toa-lac-tai-Mat-tien-Dai-Lo-Thang-Long-giup-cu-dan-ket-noi-thuan-tien-den-khu-vuc-lan-can_b2a0b4.jpg",
+      "https://res.cloudinary.com/da6f4dmql/image/upload/v1783658877/G%C3%93C_FLY_CAM_PH%E1%BB%90_4_jpzvyj.jpg",
   },
 ];
 

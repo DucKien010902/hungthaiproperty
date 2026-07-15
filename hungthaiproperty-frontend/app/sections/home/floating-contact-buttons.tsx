@@ -17,7 +17,7 @@ const contactButtons = [
   },
   {
     id: "zalo",
-    href: "https://zalo.me/0938619339",
+    href: "https://zalo.me/0977275146",
     label: "Zalo",
     className: styles.zalo,
     icon: <span className={styles.zaloText}>Zalo</span>,

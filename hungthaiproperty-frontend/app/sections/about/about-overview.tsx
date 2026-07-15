@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -25,14 +24,22 @@ export function AboutOverview() {
         </div>
 
         <div className={styles.content}>
-          <h2 className={styles.title}>
-            A Happy Approach to Real Estate Sales
-          </h2>
+          <h2 className={styles.title}>Tổng quan doanh nghiệp</h2>
 
           <p className={styles.description}>
-            Nam Sơn Land tự hào là đơn vị phân phối và tư vấn bất động sản
-            chuyên sâu, không ngừng kiến tạo những không gian an cư và cơ hội
-            đầu tư lý tưởng.
+            <span className={styles.companyName}>
+              CÔNG TY CỔ PHẦN ĐẦU TƯ HƯNG THÁI PROPERTY
+            </span>{" "}
+            là đơn vị hoạt động trong lĩnh vực đầu tư và phát triển bất động sản,
+            định hướng kiến tạo các khu đô thị, khu dân cư và không gian sống có
+            giá trị thực cho cộng đồng. Ra đời với khát vọng xây dựng một thương
+            hiệu bất động sản làm thật, phát triển thật và hướng đến những giá trị
+            lâu dài, Hưng Thái Property lựa chọn cách tiếp cận thận trọng, bài
+            bản trong từng bước đi - từ nghiên cứu thị trường, hoạch định quy
+            hoạch, đến triển khai và vận hành dự án.
+            <br /> Chúng tôi tin rằng một doanh nghiệp bất động sản bền vững cần
+            được xây dựng trên nền tảng của sự trung thực, năng lực thực chất và
+            tầm nhìn dài hạn - không phải những cam kết mang tính hình thức.
           </p>
         </div>
 
@@ -40,7 +47,7 @@ export function AboutOverview() {
           <img
             className={styles.image}
             src={aboutCoverImage}
-            alt="Ảnh bìa giới thiệu Nam Sơn Land"
+            alt="Ảnh bìa giới thiệu Hưng Thái Property"
           />
         </div>
       </motion.div>

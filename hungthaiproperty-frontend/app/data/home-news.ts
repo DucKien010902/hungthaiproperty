@@ -1,4 +1,6 @@
 // Định nghĩa lại Type đơn giản và linh hoạt hơn
+import { getDriveImageUrl } from "../lib/drive-image";
+
 export type ContentBlock = 
   | { type: 'text'; content: string }
   | { type: 'image'; src: string; alt?: string };
@@ -33,7 +35,7 @@ function normalizeContentBlock(block: ContentBlock): ContentBlock {
   if (block.type === "image") {
     return {
       ...block,
-      src: getDriveDirectLink(block.src),
+      src: getDriveImageUrl(block.src),
     };
   }
 
@@ -43,404 +45,793 @@ function normalizeContentBlock(block: ContentBlock): ContentBlock {
 function normalizeNewsArticle(article: RawNewsArticle): NewsArticle {
   return {
     ...article,
-    image: getDriveDirectLink(article.image),
+    image: getDriveImageUrl(article.image),
     contentBlocks: article.contentBlocks.map(normalizeContentBlock),
   };
 }
 
 const rawNewsArticles: RawNewsArticle[] = [
   {
-    id: "dieu-nam-son-land-can-chung-minh-la-dang-tin",
-    title: "Điều Nam Sơn Land cần chứng minh không phải là mình lớn, mà là mình đáng tin.",
-    image: "https://drive.google.com/file/d/1N7_B3KJBiowSKyPDkA4hOFv7J-qtuCo7/view?usp=drive_link", // Lấy ảnh 1.2 làm ảnh đại diện bài viết
-    excerpt: "Trong bất động sản, niềm tin luôn là tài sản khó xây dựng nhất. Khách hàng thận trọng hơn và cần những doanh nghiệp có trách nhiệm hơn trong cách phát triển, truyền tải và đồng hành cùng thị trường.",
-    date: "13/07/2026",
-    href: "#",
-    contentBlocks: [
-      {
-        type: "text",
-        content: "Trong bất động sản, niềm tin luôn là tài sản khó xây dựng nhất. Một dự án có thể thu hút sự chú ý bằng vị trí, thiết kế, chính sách bán hàng hay kỳ vọng tăng trưởng. Nhưng để khách hàng thật sự tin tưởng, lựa chọn và tiếp tục đồng hành, điều họ cần không chỉ là một lời giới thiệu hấp dẫn mà điều họ cần là cảm giác được cung cấp thông tin rõ ràng, được tư vấn đúng nhu cầu và được tôn trọng trong một quyết định tài chính quan trọng."
-      },
-      {
-        type: "text",
-        content: "Đây cũng là bối cảnh mà Nam Sơn Land bắt đầu hành trình xây dựng thương hiệu trong lĩnh vực bất động sản. Là một thương hiệu mới, Nam Sơn Land không bước ra thị trường bằng câu chuyện về quy mô hay những tuyên bố lớn. Điều cần thiết hơn ở giai đoạn khởi nguồn là tiếp cận một cách đủ rõ ràng: lấy giá trị thực làm nền, lấy minh bạch làm nguyên tắc và lấy sự đồng hành cùng khách hàng làm trọng tâm."
-      },
-      {
-        type: "image",
-        src: "https://drive.google.com/file/d/1N7_B3KJBiowSKyPDkA4hOFv7J-qtuCo7/view?usp=drive_link", // ID ảnh 1.1 thực tế trong folder của bạn
-        alt: "Hành trình xây dựng thương hiệu Nam Sơn Land"
-      },
-      {
-        type: "text",
-        content: "Thị trường bất động sản sau nhiều giai đoạn biến động đã thay đổi đáng kể cách người mua ra quyết định. Khách hàng ngày nay không chỉ hỏi dự án nằm ở đâu, giá bao nhiêu, chính sách thế nào. Họ quan tâm nhiều hơn đến tính phù hợp của sản phẩm, mức độ rõ ràng của thông tin, khả năng khai thác thực tế, yếu tố pháp lý cần kiểm chứng và mức độ an toàn của quyết định đầu tư. Nói cách khác, người mua bất động sản đang thận trọng hơn, tỉnh táo hơn và cần những doanh nghiệp bất động sản có trách nhiệm hơn trong cách phát triển, truyền tải và đồng hành cùng thị trường."
-      },
-      {
-        type: "text",
-        content: "Với Nam Sơn Land, sự đáng tin trước hết bắt đầu từ việc xác định đúng vai trò của mình. Trong vai trò một doanh nghiệp bất động sản đang xây dựng hệ sinh thái hoạt động, Nam Sơn Land định hướng phát triển trên ba trụ cột quan trọng: phân phối dự án bất động sản, tư vấn dự án và kết nối đầu tư. Đây không chỉ là các mảng dịch vụ, mà còn là ba điểm chạm quan trọng trong hành trình khách hàng tiếp cận, đánh giá và lựa chọn sản phẩm bất động sản."
-      },
-      {
-        type: "text",
-        content: "Ở vai trò phân phối bất động sản, Nam Sơn Land không nên chỉ được nhìn như một đơn vị giới thiệu sản phẩm ra thị trường. Giá trị của một đơn vị phân phối nằm ở khả năng đưa thông tin đến đúng người, đúng nhu cầu và đúng bối cảnh. Một sản phẩm bất động sản chỉ thật sự có ý nghĩa khi khách hàng hiểu rõ mình đang mua gì, vì sao sản phẩm đó phù hợp và đâu là những yếu tố cần cân nhắc trước khi ra quyết định."
-      },
-      {
-        type: "image",
-        src: "https://drive.google.com/file/d/1rGOIm8_I6MGq7Wnzj3cz6wNds7Cs9fqt", // ID ảnh 1.2
-        alt: "Ba trụ cột chiến lược của Nam Sơn Land"
-      },
-      {
-        type: "text",
-        content: "Ở vai trò tư vấn dự án, điều quan trọng không phải là nói thật nhiều về ưu điểm, mà là giúp khách hàng nhìn bất động sản một cách đầy đủ hơn. Một người mua để ở sẽ có hệ tiêu chí khác với một nhà đầu tư. Một khách hàng tích sản dài hạn sẽ quan tâm khác với người tìm kiếm cơ hội khai thác dòng tiền. Nếu tư vấn chỉ dừng lại ở thông tin bề mặt, giao dịch có thể diễn ra nhanh, nhưng niềm tin khó có thể đi xa."
-      },
-      {
-        type: "text",
-        content: "Ở vai trò kết nối đầu tư, Nam Sơn Land hướng đến việc đưa sản phẩm, cơ hội và nhu cầu thị trường về gần nhau hơn. Trong bất động sản, một cơ hội tốt không chỉ nằm ở bản thân sản phẩm, mà còn nằm ở việc sản phẩm đó có được đặt đúng vào nhu cầu của khách hàng hay không. Bởi vậy, giá trị của sự kết nối không nằm ở việc tạo ra cảm xúc hứng khởi trong ngắn hạn, mà ở khả năng đưa chủ đầu tư, nhà đầu tư và người mua đến gần nhau hơn trên cơ sở thông tin minh bạch, nhu cầu phù hợp và kỳ vọng được đặt đúng chỗ."
-      },
-      {
-        type: "text",
-        content: "Từ những định hướng đầu tiên, Nam Sơn Land đang lựa chọn một cách tiếp cận thận trọng nhưng cần thiết: không bắt đầu bằng những tuyên bố về vị thế, mà bắt đầu bằng các giá trị nền như giá trị thực, minh bạch, thấu hiểu và đồng hành. Trong bất động sản, đây không phải là những khái niệm mới. Nhưng với một thương hiệu đang ở giai đoạn khởi nguồn, chúng chỉ có ý nghĩa khi được chứng minh qua từng việc cụ thể: cách cung cấp thông tin dự án, cách tư vấn theo đúng nhu cầu, cách giải thích chính sách, cách nói đúng mức về những yếu tố cần kiểm chứng và cách tiếp tục đồng hành cùng khách hàng sau mỗi giao dịch."
-      },
-      {
-        type: "image",
-        src: "https://drive.google.com/file/d/1n7p0Bd0Wo0xuNPIHNk0-z_kL0j2DWyZj/view?usp=drive_link", // ID ảnh 1.3 thực tế trong folder của bạn
-        alt: "Sự minh bạch và đồng hành cùng khách hàng"
-      },
-      {
-        type: "text",
-        content: "Điều đó cũng đặt ra một yêu cầu rõ ràng cho Nam Sơn Land trong hành trình phía trước. Thương hiệu không thể xây dựng niềm tin chỉ bằng ngôn từ. Niềm tin cần được tích lũy qua từng điểm chạm: từ nội dung truyền thông, danh mục dự án, quy trình tư vấn, chất lượng thông tin đến trải nghiệm thực tế của khách hàng. Với một doanh nghiệp mới trong ngành bất động sản, đây là con đường không nhanh, nhưng là con đường bền."
-      },
-      {
-        type: "text",
-        content: "Sau cùng, điều Nam Sơn Land cần chứng minh không phải là mình lớn. Điều cần chứng minh là mình đáng tin. Bởi trong bất động sản, một thương hiệu có thể được biết đến nhờ truyền thông, nhưng chỉ có thể được lựa chọn lâu dài khi khách hàng cảm thấy họ được lắng nghe, được hiểu đúng và được đồng hành bằng sự minh bạch, trách nhiệm và tử tế."
-      }
-    ]
-  },
-  {
-  id: "gia-tri-thuc-nen-mong-dau-tien-cua-nam-son-land",
-  title: "Giá trị thực: nền móng đầu tiên trong cách Nam Sơn Land bước vào thị trường",
-  image: "https://drive.google.com/file/d/1EjWJG2Yu-LiSGfjBgiTmLa9AjkNhOh_P/view?usp=drive_link",
-  excerpt:
-    "Sau nhiều biến động của thị trường, người mua bất động sản ngày càng thận trọng hơn. Giá trị thực vì thế trở thành nền tảng để Nam Sơn Land phát triển sản phẩm, truyền tải thông tin và tư vấn khách hàng một cách rõ ràng, thực tế và có trách nhiệm.",
-  date: "13/07/2026",
+  id: "hung-thai-property-hanh-trinh-xay-dung-thuong-hieu-lam-that",
+  title: "Hưng Thái Property – Hành trình xây dựng một thương hiệu bất động sản làm thật",
+  image: "https://drive.google.com/file/d/1ogHDfAptYDoQUJeyKZ5p0hgZJCExLosL/view?usp=drive_link", // Sử dụng ảnh đầu tiên làm ảnh đại diện
+  excerpt: "Trong bất động sản, để một cái tên xuất hiện trên thị trường không phải điều quá khó. Nhưng để cái tên ấy được thị trường nhớ đến bằng niềm tin lại là một câu chuyện dài hơn rất nhiều.",
+  date: "15/07/2026",
   href: "#",
   contentBlocks: [
     {
       type: "text",
-      content:
-        "Trong bất động sản, giá trị của một tài sản không chỉ nằm ở vị trí, thiết kế hay những kỳ vọng tăng trưởng được nhắc đến trong các tài liệu bán hàng. Sau nhiều biến động của thị trường, người mua ngày càng thận trọng hơn trong cách tiếp cận thông tin. Họ không chỉ muốn biết một dự án có gì, mà còn muốn hiểu rõ hơn: giá trị đó có thật không, sản phẩm có phù hợp với nhu cầu của mình không, pháp lý cần kiểm chứng những gì, khả năng khai thác ra sao và quyết định xuống tiền có đang dựa trên dữ liệu hay chỉ là cảm xúc nhất thời."
+      content: "Trong bất động sản, để một cái tên xuất hiện trên thị trường không phải điều quá khó. Một bộ nhận diện chỉn chu, vài hình ảnh phối cảnh ấn tượng hay một chiến dịch truyền thông được đầu tư bài bản có thể nhanh chóng tạo ra sự chú ý ban đầu."
     },
     {
       type: "text",
-      content:
-        "Trong bối cảnh ấy, việc Nam Sơn Land lựa chọn “giá trị thực” làm một trong những nền móng đầu tiên cho hành trình thương hiệu là một hướng đi cần thiết. Với một thương hiệu mới trong lĩnh vực bất động sản, điều quan trọng không phải là tạo ra những tuyên bố lớn ngay từ đầu, mà là xác lập một nguyên tắc phát triển đủ bền: mọi sản phẩm, mọi thông tin và mọi hoạt động tư vấn đều cần được đặt trên nền tảng rõ ràng, thực tế và có trách nhiệm với khách hàng."
+      content: "Nhưng để cái tên ấy được thị trường nhớ đến bằng niềm tin lại là một câu chuyện dài hơn rất nhiều."
+    },
+    {
+      type: "text",
+      content: "Bởi phía sau mỗi quyết định mua bất động sản không chỉ là một giao dịch. Đó có thể là khoản tích lũy của nhiều năm lao động, là kế hoạch an cư của một gia đình, là kỳ vọng kinh doanh hoặc mong muốn giữ lại một tài sản có giá trị cho tương lai. Người mua có thể dừng lại trước một hình ảnh đẹp, nhưng để đi đến quyết định cuối cùng, họ cần nhiều hơn cảm xúc. Họ cần biết mình đang đặt niềm tin vào ai, vào điều gì và những lời được nói hôm nay sẽ được thực hiện ra sao trong những năm tiếp theo."
     },
     {
       type: "image",
-      src: "https://drive.google.com/file/d/1EjWJG2Yu-LiSGfjBgiTmLa9AjkNhOh_P/view?usp=drive_link",
-      alt: "Giá trị thực là nền móng trong hành trình phát triển của Nam Sơn Land"
+      src: "https://drive.google.com/file/d/1ogHDfAptYDoQUJeyKZ5p0hgZJCExLosL/view?usp=drive_link", // Ảnh 1.1
+      alt: "Hưng Thái Property – Khởi nguồn hành trình xây dựng niềm tin"
     },
     {
       type: "text",
-      content:
-        "“Giá trị thực” trong bất động sản không phải là một khái niệm xa lạ, nhưng lại là điều không dễ giữ vững trong một thị trường nhiều kỳ vọng. Một sản phẩm có giá trị thực cần được nhìn nhận từ nhiều lớp: vị trí có tạo ra kết nối thuận tiện hay không, pháp lý và thông tin dự án cần được kiểm tra ở mức nào, nhu cầu ở thực hoặc khai thác có hiện hữu hay không, mức giá có phù hợp với mặt bằng thị trường và khả năng tài chính của khách hàng hay không. Đó là những câu hỏi cơ bản, nhưng cũng là những câu hỏi giúp người mua tránh rơi vào quyết định vội vàng."
+      content: "Với một thương hiệu còn đang từng bước tạo dựng vị thế như Hưng Thái Property, câu hỏi ấy càng trở nên quan trọng."
     },
     {
       type: "text",
-      content:
-        "Với một doanh nghiệp bất động sản, giá trị thực không chỉ nằm ở danh mục dự án được giới thiệu, mà còn nằm ở cách sản phẩm được lựa chọn, phát triển, phân tích và truyền tải đến thị trường. Điều quan trọng hơn là giúp khách hàng nhìn rõ giá trị thật của từng sản phẩm: vì sao sản phẩm đó đáng được xem xét, phù hợp với nhóm nhu cầu nào và đâu là những yếu tố cần kiểm chứng trước khi đưa ra quyết định."
+      content: "Khi chưa có một hành trình đủ dài để thị trường nhìn lại, cách thuyết phục nhất không nằm ở những danh xưng lớn hay một câu chuyện được kể quá sớm. Niềm tin cần được bắt đầu từ những điều cụ thể hơn: sự thận trọng trong lựa chọn dự án, khả năng nghiên cứu đúng nhu cầu của từng khu vực, tính rõ ràng trong thông tin và trách nhiệm đối với những giá trị doanh nghiệp muốn tạo ra trong dài hạn."
     },
     {
       type: "text",
-      content:
-        "Ở góc độ tư vấn, giá trị thực cũng đòi hỏi sự thấu hiểu nhu cầu. Một khách hàng mua nhà để ở sẽ quan tâm nhiều đến môi trường sống, kết nối, tiện ích và sự ổn định lâu dài. Một nhà đầu tư sẽ nhìn sâu hơn vào dòng tiền, tính thanh khoản, tiềm năng khai thác và chu kỳ thị trường. Một người mua tích sản lại cần sự an toàn, tính bền vững và khả năng giữ giá trong dài hạn. Nếu mọi khách hàng đều được tư vấn bằng cùng một kịch bản, giao dịch có thể diễn ra nhanh hơn, nhưng chưa chắc đã tạo ra niềm tin lâu dài."
+      content: "Đó cũng là cách tinh thần “làm thật” nên được nhìn nhận trong hành trình phát triển của Hưng Thái Property."
     },
     {
       type: "text",
-      content:
-        "Bởi vậy, khi Nam Sơn Land đặt giá trị thực làm nền móng, đó không nên chỉ là một thông điệp truyền thông. Giá trị này cần được chuyển hóa thành cách làm cụ thể: thông tin dự án được trình bày rõ ràng, lợi thế được phân tích đúng mức, những yếu tố cần kiểm chứng không bị bỏ qua, chính sách được giải thích dễ hiểu và khách hàng được hỗ trợ để hiểu đúng tài sản trước khi quyết định."
+      content: "“Làm thật” không phải là một khẩu hiệu để đặt lên truyền thông, càng không phải một danh hiệu doanh nghiệp có thể tự trao cho mình. Trong bất động sản, điều đó chỉ có ý nghĩa khi được kiểm chứng bằng thời gian, bằng từng quyết định phát triển và bằng khoảng cách giữa điều đã nói với điều thực tế được triển khai."
     },
     {
       type: "text",
-      content:
-        "Trong thị trường bất động sản, minh bạch và giá trị thực luôn đi cùng nhau. Minh bạch không có nghĩa là chỉ cung cấp nhiều thông tin, mà là cung cấp thông tin có ích, đúng trọng tâm và không tạo ra kỳ vọng vượt quá cơ sở hiện có. Một dự án có thể có tiềm năng, nhưng tiềm năng cần được nhìn trong điều kiện cụ thể. Một khu vực có thể có dư địa phát triển, nhưng dư địa đó cần được đánh giá cùng hạ tầng, nhu cầu dân cư, hoạt động thương mại và khả năng hấp thụ thực tế."
+      content: "Một khu đất, nếu chỉ được nhìn như một tài sản để khai thác, rất dễ dẫn đến tư duy ngắn hạn. Nhưng khi khu đất ấy được đặt trong mối quan hệ với đời sống dân cư, hạ tầng hiện hữu, hoạt động thương mại và nhu cầu phát triển của địa phương, câu chuyện của dự án sẽ bắt đầu từ một nền tảng khác."
+    },
+    {
+      type: "text",
+      content: "Tương tự, một bản quy hoạch không chỉ cần đẹp trên giấy. Giá trị của nó nằm ở việc có thể giải quyết được những câu hỏi rất đời thường: cư dân sẽ di chuyển như thế nào, không gian chung được sử dụng ra sao, hoạt động kinh doanh có thuận lợi không và dự án sẽ bổ sung điều gì cho khu vực xung quanh."
     },
     {
       type: "image",
-      src: "https://drive.google.com/file/d/171Fq2TFiGXih4irrXkBmCtrcYvfBBZq4/view?usp=drive_link",
-      alt: "Minh bạch và giá trị thực trong hoạt động tư vấn bất động sản"
+      src: "https://drive.google.com/file/d/1y7zJPmDd5AY4Pp9smIPppnl0hKoZdguj/view?usp=drive_link", // Ảnh 1.2
+      alt: "Tinh thần làm thật bắt nguồn từ những giá trị quy hoạch thực tế"
     },
     {
       type: "text",
-      content:
-        "Đối với một thương hiệu mới như Nam Sơn Land, chọn giá trị thực cũng là chọn một con đường dài hơn. Đây không phải là cách nhanh nhất để tạo tiếng vang, nhưng là cách phù hợp để xây dựng niềm tin. Bởi trong bất động sản, khách hàng có thể bị thu hút bởi truyền thông ban đầu, nhưng họ chỉ ở lại với thương hiệu khi cảm thấy mình được tư vấn đúng, được cung cấp thông tin rõ và được tôn trọng trong từng quyết định."
+      content: "Tinh thần “làm thật” còn nằm ở cách doanh nghiệp đối diện với thông tin."
     },
     {
       type: "text",
-      content:
-        "Sau cùng, “giá trị thực” không phải là khẩu hiệu để Nam Sơn Land nói về mình, mà là tiêu chuẩn để thương hiệu này tự kiểm chứng trong từng hoạt động. Từ phân phối dự án, tư vấn dự án đến kết nối đầu tư, nếu Nam Sơn Land giữ được nguyên tắc ấy một cách nhất quán, thương hiệu sẽ có cơ sở để từng bước xây dựng vị trí của mình trên thị trường bất động sản bằng điều quan trọng nhất: niềm tin của khách hàng."
+      content: "Điều gì đã có đủ cơ sở cần được thể hiện rõ ràng. Điều gì vẫn đang trong quá trình hoàn thiện cần được diễn đạt đúng mức. Kỳ vọng không nên được biến thành cam kết, và những hình ảnh mang tính định hướng cũng không nên được kể như một thực tế đã hoàn thành."
+    },
+    {
+      type: "text",
+      content: "Sự minh bạch, xét cho cùng, không chỉ là cách bảo vệ người mua. Đó còn là cách một thương hiệu bảo vệ chính uy tín của mình trong dài hạn."
+    },
+    {
+      type: "text",
+      content: "Tuy nhiên, một định hướng đúng vẫn chưa đủ để tạo nên một chủ đầu tư đáng tin cậy. Bất động sản là lĩnh vực đòi hỏi năng lực thực thi. Một triết lý chỉ thực sự có sức nặng khi được chuyển hóa thành tiến độ, chất lượng, tính hợp lý của sản phẩm và cách doanh nghiệp ứng xử với khách hàng trong suốt vòng đời dự án."
+    },
+    {
+      type: "text",
+      content: "Bởi vậy, với Hưng Thái Property, “làm thật” không nên được xem là một thành quả để vội vàng khẳng định, mà là chuẩn mực cần được kiên trì theo đuổi và từng bước chứng minh qua mỗi quyết định phát triển."
+    },
+    {
+      type: "text",
+      content: "Mỗi dự án sẽ là một lần thương hiệu được thị trường nhìn lại. Mỗi lựa chọn về vị trí, quy hoạch, pháp lý hay sản phẩm đều góp thêm một lớp vào cách khách hàng đánh giá doanh nghiệp. Niềm tin sẽ không hình thành trong một chiến dịch truyền thông. Nó được tích lũy chậm rãi từ những điều nhất quán và có thể kiểm chứng."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/1s4CIgtu1hmFKGZa3c-scwMeq2YoRTlIl/view?usp=drive_link", // Ảnh 1.3
+      alt: "Sự minh bạch và nỗ lực nâng cao năng lực thực thi"
+    },
+    {
+      type: "text",
+      content: "Thị trường bất động sản hôm nay cũng đã khác trước. Người mua ngày càng thận trọng hơn trước những lời hứa lớn. Họ muốn hiểu dự án giải quyết nhu cầu gì, đâu là giá trị hiện hữu, đâu là điều vẫn cần thời gian để hình thành và doanh nghiệp sẽ chịu trách nhiệm đến đâu với những gì mình đưa ra."
+    },
+    {
+      type: "text",
+      content: "Trong bối cảnh ấy, một thương hiệu mới không nhất thiết phải cố xuất hiện như thể mình đã đi qua một chặng đường rất dài. Điều quan trọng hơn là biết mình đang bắt đầu từ đâu, lựa chọn nguyên tắc nào để theo đuổi và đủ kiên định để những giá trị thực tế dần lên tiếng thay cho lời giới thiệu."
+    },
+    {
+      type: "text",
+      content: "Hành trình xây dựng Hưng Thái Property vì thế không chỉ là hành trình tạo nên một cái tên trên thị trường. Đó còn là quá trình biến những điều doanh nghiệp tin tưởng thành cách làm cụ thể, biến định hướng thành kết quả và biến từng dự án thành một bằng chứng cho uy tín được xây dựng theo thời gian."
+    },
+    {
+      type: "text",
+      content: "Bởi sau cùng, thương hiệu không nằm ở việc doanh nghiệp nói mình là ai. Thương hiệu nằm ở cách thị trường nhớ về những gì doanh nghiệp đã thực sự làm."
     }
   ]
 },
 {
-  id: "phan-phoi-minh-bach-trong-bat-dong-san-nam-son-land-chon-cach-di-nao",
-  title: "Phân phối minh bạch trong bất động sản: Nam Sơn Land chọn cách đi nào?",
-  image: "https://drive.google.com/file/d/1PKtizYPPN7V7XeP6B-ZjOIcNDJryzIX2/view?usp=drive_link",
-  excerpt:
-    "Trong thị trường bất động sản, với Nam Sơn Land việc phân phối bất động sản không được nhìn như một hoạt động tách rời, mà là một cấu phần trong hệ sinh thái doanh nghiệp: từ tư duy phát triển sản phẩm, lựa chọn dự án, tổ chức thông tin đến kết nối sản phẩm với thị trường.",
-  date: "13/07/2026",
+  id: "gia-tri-dich-thuc-triet-ly-xuyen-suot-trong-dinh-huong-phat-trien-cua-hung-thai-property",
+  title: "“Giá trị đích thực” – Triết lý xuyên suốt trong định hướng phát triển của Hưng Thái Property",
+  image: "https://drive.google.com/file/d/1vGe5yrYCbKv8pH4JDuuCv9m1tD7RqBnl/view?usp=drive_link",
+  excerpt: "Trong bất động sản, giá trị đôi khi được nhìn thấy rất nhanh qua một vị trí đẹp, một bản phối cảnh ấn tượng. Nhưng cũng có những giá trị chỉ xuất hiện rõ ràng hơn sau nhiều năm, khi công trình đi vào sử dụng.",
+  date: "15/07/2026",
   href: "#",
   contentBlocks: [
     {
       type: "text",
-      content:
-        "Trong thị trường bất động sản, với Nam Sơn Land việc phân phối bất động sản không được nhìn như một hoạt động tách rời, mà là một cấu phần trong hệ sinh thái doanh nghiệp: từ tư duy phát triển sản phẩm, lựa chọn dự án, tổ chức thông tin đến kết nối sản phẩm với thị trường. Đây là mắt xích đưa sản phẩm từ chủ đầu tư đến gần hơn với thị trường, giúp khách hàng tiếp cận thông tin, hiểu hơn về dự án và có thêm cơ sở để đưa ra quyết định. Tuy nhiên, khi thị trường bước qua những giai đoạn biến động, vai trò của một đơn vị phân phối bất động sản cũng không còn dừng lại ở việc giới thiệu sản phẩm hay truyền tải chính sách bán hàng. Điều được đặt ra nhiều hơn là cách doanh nghiệp tổ chức thông tin, lựa chọn sản phẩm và xây dựng niềm tin với thị trường."
+      content: "Trong bất động sản, giá trị đôi khi được nhìn thấy rất nhanh qua một vị trí đẹp, một bản phối cảnh ấn tượng hay mức độ quan tâm của thị trường tại thời điểm dự án được giới thiệu. Nhưng cũng có những giá trị chỉ xuất hiện rõ ràng hơn sau nhiều năm, khi công trình đi vào sử dụng, cư dân bắt đầu hình thành nhịp sống và những lời hứa ban đầu được đối chiếu với thực tế."
+    },
+    {
+      type: "text",
+      content: "Bởi vậy, giá trị của một dự án không nên chỉ được đo bằng những gì tạo ra sức hút trong giai đoạn đầu. Điều quan trọng hơn là sau khi truyền thông lắng xuống, sản phẩm ấy còn mang lại điều gì cho người sở hữu, cho cộng đồng cư dân và cho khu vực nơi dự án hiện diện."
+    },
+    {
+      type: "text",
+      content: "Đó cũng là nền tảng để Hưng Thái Property đặt “giá trị đích thực” vào định hướng phát triển của mình."
     },
     {
       type: "image",
-      src: "https://drive.google.com/file/d/1PKtizYPPN7V7XeP6B-ZjOIcNDJryzIX2/view?usp=drive_link",
-      alt: "Hoạt động phân phối bất động sản minh bạch của Nam Sơn Land"
+      src: "https://drive.google.com/file/d/1vGe5yrYCbKv8pH4JDuuCv9m1tD7RqBnl/view?usp=drive_link",
+      alt: "Triết lý giá trị đích thực tại Hưng Thái Property"
     },
     {
       type: "text",
-      content:
-        "Trong bối cảnh đó, Nam Sơn Land đang từng bước định hình vai trò của mình như một doanh nghiệp bất động sản hướng đến sự rõ ràng, thực tế và trách nhiệm. Là một thương hiệu ở giai đoạn khởi nguồn, Nam Sơn Land không chọn cách xuất hiện bằng những tuyên bố quá lớn. Thay vào đó, doanh nghiệp đặt trọng tâm vào những giá trị nền tảng: giá trị thực, sự minh bạch và khả năng đồng hành cùng thị trường bằng thông tin có cơ sở."
+      content: "“Giá trị đích thực” trước hết không nên được hiểu như một khẩu hiệu đẹp. Đây là một khái niệm rộng và rất dễ trở nên mơ hồ nếu không được thể hiện bằng những tiêu chuẩn cụ thể. Trong bất động sản, một dự án chỉ thực sự có giá trị khi nó không dừng lại ở vẻ ngoài, mà có khả năng phục vụ đời sống, đáp ứng đúng nhu cầu và duy trì ý nghĩa trong dài hạn."
     },
     {
       type: "text",
-      content:
-        "Ở góc nhìn dài hạn, một đơn vị phân phối bất động sản không chỉ được đánh giá bằng số lượng dự án giới thiệu ra thị trường. Điều quan trọng hơn nằm ở chất lượng của những sản phẩm được lựa chọn, cách thông tin được truyền tải và mức độ phù hợp giữa sản phẩm với nhu cầu thực tế của khách hàng. Một bất động sản có thể sở hữu vị trí tốt, quy hoạch hấp dẫn hoặc dư địa phát triển đáng chú ý, nhưng những yếu tố đó chỉ thật sự có giá trị khi được đặt trong một bức tranh đầy đủ hơn: pháp lý, hạ tầng, nhu cầu sử dụng, khả năng khai thác và tiềm năng phát triển dài hạn."
+      content: "Một căn nhà không chỉ cần đẹp khi nhìn trên bản vẽ, mà phải phù hợp với cách gia đình sinh hoạt mỗi ngày. Một sản phẩm thương mại không chỉ cần nằm ở vị trí có nhiều người qua lại, mà còn phải có khả năng tiếp cận, khai thác và thích nghi với hoạt động kinh doanh thực tế. Một khu đô thị không chỉ cần có đủ các hạng mục trên mặt bằng, mà phải tạo được sự kết nối hợp lý giữa nơi ở, giao thông, cảnh quan và không gian cộng đồng."
     },
     {
       type: "text",
-      content:
-        "Đó là lý do “giá trị thực” trở thành một tiêu chí quan trọng trong định hướng phát triển của Nam Sơn Land. Giá trị thực không phải là một cụm từ để làm đẹp cho thông điệp truyền thông. Trong bất động sản, giá trị thực cần được thể hiện qua cách nhìn nhận sản phẩm một cách toàn diện: sản phẩm đó nằm ở đâu, phục vụ nhóm nhu cầu nào, có khả năng tạo giá trị sử dụng ra sao, những yếu tố nào đã rõ ràng và những yếu tố nào cần tiếp tục được kiểm chứng. Khi tiếp cận thị trường bằng góc nhìn này, hoạt động phân phối không chỉ tạo ra sự chú ý nhất thời, mà còn góp phần giúp người mua và nhà đầu tư hiểu đúng hơn về tài sản mà họ đang quan tâm."
+      content: "Nói cách khác, giá trị thật không nằm ở việc dự án có bao nhiêu tiện ích, mà nằm ở việc những tiện ích ấy có được sử dụng hay không. Không nằm ở khoảng cách được tính trên bản đồ, mà ở khả năng kết nối ấy có thực sự thuận tiện trong đời sống. Không nằm ở cách một sản phẩm được gọi tên, mà ở việc nó giải quyết được nhu cầu nào của người mua. Bên cạnh giá trị sử dụng là giá trị của sự phù hợp."
     },
     {
       type: "text",
-      content:
-        "Song hành với giá trị thực là sự minh bạch. Trong một thị trường không thiếu dự án và cũng không thiếu những lời giới thiệu hấp dẫn, sự rõ ràng của thông tin dần trở thành tiêu chuẩn quan trọng hơn bao giờ hết. Người mua hôm nay không chỉ cần biết một sản phẩm đang được chào bán, mà cần hiểu sản phẩm ấy đang được đặt trong bối cảnh nào, giá trị nào là hiện hữu, giá trị nào còn cần thời gian kiểm chứng và đâu là cơ sở để đưa ra một quyết định đủ tỉnh táo."
-    },
-    {
-      type: "text",
-      content:
-        "Với Nam Sơn Land, minh bạch không nên được hiểu đơn giản là cung cấp nhiều thông tin. Minh bạch là cung cấp thông tin đúng trọng tâm, đúng giới hạn và đúng khả năng kiểm chứng. Một khu vực có thể có dư địa phát triển, nhưng dư địa đó cần được nhìn cùng tiến độ hạ tầng, dòng dân cư, hoạt động thương mại và khả năng hấp thụ thực tế. Một dự án có thể có nhiều lợi thế, nhưng lợi thế ấy chỉ trở thành giá trị khi được phân tích trong điều kiện cụ thể, thay vì được đẩy lên thành những kỳ vọng vượt quá cơ sở hiện có."
+      content: "Mỗi vùng đất có một nhịp phát triển, một cấu trúc dân cư và một nhu cầu khác nhau. Một mô hình thành công ở khu vực này chưa chắc đã phù hợp với khu vực khác. Vì vậy, phát triển dự án không nên bắt đầu từ việc áp một sản phẩm có sẵn lên một khu đất, mà cần bắt đầu từ việc hiểu khu vực ấy đang thiếu gì, người dân đang cần gì và dự án có thể bổ sung điều gì cho đời sống hiện hữu."
     },
     {
       type: "image",
-      src: "https://drive.google.com/file/d/1c5-Aw-z4ah0DxzsGry3VQr6Bm-Pzc3GY/view?usp=drive_link",
-      alt: "Giá trị thực và sự minh bạch trong phân phối bất động sản"
+      src: "https://drive.google.com/file/d/1ban-GGCtevrRjA1xucB3Vg3TndbI-bWe/view?usp=drive_link",
+      alt: "Nghiên cứu nhu cầu thực tế của từng khu vực phát triển"
     },
     {
       type: "text",
-      content:
-        "Từ góc độ doanh nghiệp, định hướng phân phối bất động sản dựa trên giá trị thực và minh bạch cũng là cách Nam Sơn Land xây dựng nền móng thương hiệu. Với một thương hiệu mới, niềm tin không thể hình thành chỉ qua lời giới thiệu. Niềm tin cần được tích lũy qua từng điểm chạm: cách doanh nghiệp lựa chọn sản phẩm, cách giới thiệu dự án, cách truyền tải thông tin, cách làm rõ những yếu tố cần kiểm chứng và cách duy trì trách nhiệm với thị trường."
+      content: "Với Hưng Thái Property, “giá trị đích thực” vì thế cần được thể hiện từ những bước đầu tiên: lựa chọn vị trí, nghiên cứu thị trường, xác định loại hình sản phẩm và tổ chức quy hoạch. Nếu những quyết định ban đầu được xây dựng trên nhu cầu thực, dự án sẽ có cơ hội tạo ra sức sống bền vững hơn thay vì chỉ phụ thuộc vào kỳ vọng tăng giá trong ngắn hạn."
     },
     {
       type: "text",
-      content:
-        "Điều này cũng cho thấy Nam Sơn Land không nên được nhìn đơn thuần như một đơn vị đưa sản phẩm ra thị trường. Vai trò lớn hơn của doanh nghiệp nằm ở khả năng kết nối giữa sản phẩm, chủ đầu tư, nhà đầu tư và người mua trên nền tảng thông tin rõ ràng hơn. Khi sự kết nối ấy được xây dựng đúng cách, hoạt động phân phối không còn là khâu bán hàng cuối cùng, mà trở thành một phần trong quá trình tạo dựng giá trị cho toàn bộ chuỗi bất động sản."
+      content: "Một lớp giá trị khác không thể thiếu là niềm tin."
     },
     {
       type: "text",
-      content:
-        "Trong giai đoạn khởi nguồn, con đường của Nam Sơn Land chắc chắn cần thêm thời gian để được thị trường kiểm chứng. Nhưng chính vì vậy, lựa chọn đi từ giá trị thực và minh bạch lại càng có ý nghĩa. Đây không phải là cách nhanh nhất để tạo tiếng vang, nhưng là cách phù hợp để một doanh nghiệp bất động sản xây dựng niềm tin một cách bền vững."
+      content: "Bất động sản là loại tài sản có giá trị lớn và gắn với những kế hoạch dài hạn của người mua. Vì thế, thông tin rõ ràng, pháp lý được thể hiện đúng mức và cách doanh nghiệp phân biệt giữa điều đã có với điều đang được kỳ vọng đều ảnh hưởng trực tiếp đến giá trị của dự án."
     },
     {
       type: "text",
-      content:
-        "Sau cùng, một đơn vị phân phối bất động sản muốn đi đường dài không chỉ cần sản phẩm tốt, mà cần một cách làm đủ rõ ràng và nhất quán. Với Nam Sơn Land, việc hướng đến giá trị thực và minh bạch không chỉ là định hướng hoạt động, mà còn là lời nhắc về con đường thương hiệu cần kiên trì: phát triển bằng trách nhiệm thông tin, bằng sự cẩn trọng trong từng sản phẩm và bằng niềm tin được xây dựng từ những điều có thể kiểm chứng."
+      content: "Một sản phẩm có thể tốt, nhưng nếu thông tin thiếu nhất quán, niềm tin của khách hàng vẫn bị suy giảm. Ngược lại, một doanh nghiệp biết nói đúng điều mình có, thẳng thắn với những phần còn cần thời gian và không biến định hướng thành cam kết sẽ tạo ra một nền tảng bền vững hơn cho thương hiệu."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/1ZionLvZGDZksAPXztxYJISPBZUVVlBSe/view?usp=drive_link",
+      alt: "Sự minh bạch thông tin tạo dựng giá trị bền vững"
+    },
+    {
+      type: "text",
+      content: "Tuy nhiên, cũng cần nhìn nhận rằng “giá trị đích thực” không thể được xác nhận chỉ bằng ý chí của chủ đầu tư. Nó phải được chứng minh bằng khả năng thực thi, bằng chất lượng của từng hạng mục và bằng trải nghiệm thực tế khi dự án đi vào vận hành."
+    },
+    {
+      type: "text",
+      content: "Một dự án có nhiều cây xanh chưa chắc đã bền vững nếu cảnh quan khó duy trì. Một vị trí gần đường lớn chưa chắc đã có giá trị thương mại nếu thiếu dòng người và nhu cầu thực. Một quy hoạch đẹp chưa chắc đã tạo nên môi trường sống tốt nếu các không gian được tổ chức thiếu hợp lý."
+    },
+    {
+      type: "text",
+      content: "Chính những giới hạn ấy khiến “giá trị đích thực” không nên được xem như một lời khẳng định đã hoàn thành. Với Hưng Thái Property, điều đó phù hợp hơn khi trở thành một nguyên tắc để doanh nghiệp tự kiểm chứng trong từng quyết định: sản phẩm này phục vụ ai, giải quyết vấn đề gì và sẽ còn giữ được ý nghĩa gì sau nhiều năm."
+    },
+    {
+      type: "text",
+      content: "Sau cùng, giá trị của bất động sản không chỉ nằm trong những gì người mua sở hữu trên giấy tờ. Nó còn nằm ở cảm giác an tâm khi lựa chọn đúng, ở khả năng sử dụng tài sản mỗi ngày và ở niềm tin rằng những giá trị được tạo ra không biến mất khi một chiến dịch truyền thông kết thúc."
+    },
+    {
+      type: "text",
+      content: "“Giá trị đích thực” vì thế không cần được nói quá lớn. Nó cần được nhìn thấy trong cách một dự án được lựa chọn, phát triển và chịu trách nhiệm đến cùng."
+    },
+    {
+      type: "text",
+      content: "Đó cũng là cách Hưng Thái Property hướng tới việc biến một triết lý thương hiệu thành những giá trị có thể được cảm nhận, sử dụng và kiểm chứng theo thời gian."
     }
   ]
 },
 {
-  id: "khi-tu-van-tro-thanh-mot-nang-luc-thuong-hieu-cua-nam-son-land",
-  title: "Khi tư vấn trở thành một năng lực thương hiệu của Nam Sơn Land",
-  image: "https://drive.google.com/file/d/1MvY8LV4nKWzGYvHR5Sm3u8g20RmX2N2P/view?usp=drive_link",
-  excerpt:
-    "Trong bất động sản, khi thị trường ngày càng thận trọng, vai trò của tư vấn không còn là phần hỗ trợ phía sau hoạt động bán hàng, mà dần trở thành một năng lực quan trọng của doanh nghiệp bất động sản.",
-  date: "13/07/2026",
+  id: "vi-sao-mot-chu-dau-tu-moi-can-di-cham-de-di-xa-tren-thi-truong-bat-dong-san",
+  title: "Vì sao một chủ đầu tư mới cần đi chậm để đi xa trên thị trường bất động sản?",
+  image: "https://drive.google.com/file/d/19RWVU3bghP49wBJw2VEJU9LXn_VidT9B/view?usp=drive_link",
+  excerpt: "Trong bất động sản, tốc độ dễ trở thành một lợi thế được theo đuổi. Nhưng với một chủ đầu tư mới, “đi chậm” đôi khi không phải biểu hiện của sự dè dặt, mà là cách để xây một nền móng đủ chắc trước khi đi xa.",
+  date: "15/07/2026",
   href: "#",
   contentBlocks: [
     {
       type: "text",
-      content:
-        "Trong bất động sản, không phải mọi quyết định đều bắt đầu từ câu hỏi “sản phẩm này có gì?”. Rất nhiều quyết định thực chất bắt đầu từ những băn khoăn sâu hơn: sản phẩm này có phù hợp không, giá trị nào đã rõ, yếu tố nào cần kiểm chứng, kỳ vọng nào có cơ sở và đâu là rủi ro cần được nhìn nhận trước khi đi xa hơn. Khi thị trường ngày càng thận trọng, vai trò của tư vấn vì thế không còn là phần hỗ trợ phía sau hoạt động bán hàng, mà dần trở thành một năng lực quan trọng của doanh nghiệp bất động sản."
+      content: "Trên thị trường bất động sản, một chủ đầu tư mới thường phải đối diện với một áp lực rất rõ: phải xuất hiện nhanh, phải tạo dấu ấn sớm và phải chứng minh rằng mình đủ năng lực để được khách hàng, đối tác và thị trường ghi nhận."
     },
     {
       type: "text",
-      content:
-        "Với Nam Sơn Land, tư vấn không chỉ dừng ở việc truyền tải thông tin dự án. Đó còn là năng lực giúp doanh nghiệp hiểu đúng sản phẩm, hiểu đúng nhu cầu thị trường và kết nối các cơ hội bất động sản trên nền tảng rõ ràng, thực tế và có trách nhiệm."
+      content: "Trong áp lực ấy, tốc độ dễ trở thành một lợi thế được theo đuổi. Một dự án được giới thiệu sớm hơn, một chiến dịch truyền thông được triển khai mạnh hơn hay một kế hoạch mở rộng nhanh hơn có thể giúp doanh nghiệp thu hút sự chú ý trong thời gian ngắn."
     },
     {
       type: "text",
-      content:
-        "Một sản phẩm bất động sản có thể được giới thiệu bằng nhiều lợi thế: vị trí, quy hoạch, tiện ích, chính sách, khả năng khai thác hoặc tiềm năng dài hạn. Nhưng nếu những lợi thế ấy chỉ được truyền tải như các điểm cộng riêng lẻ, người mua rất dễ tiếp cận sản phẩm bằng cảm xúc nhất thời. Tư vấn có chiều sâu đòi hỏi một cách nhìn khác: đặt sản phẩm vào bối cảnh đầy đủ hơn, từ hạ tầng, pháp lý cần kiểm chứng, nhu cầu sử dụng, khả năng tài chính đến mục tiêu nắm giữ tài sản của từng nhóm khách hàng."
+      content: "Nhưng bất động sản không phải lĩnh vực mà mọi sự vội vàng đều mang lại kết quả tốt."
+    },
+    {
+      type: "text",
+      content: "Bởi phía sau mỗi dự án là hàng loạt quyết định có ảnh hưởng lâu dài: lựa chọn vị trí, nghiên cứu nhu cầu, tổ chức quy hoạch, hoàn thiện pháp lý, chuẩn bị nguồn lực và xác định cách dự án sẽ vận hành trong thực tế. Chỉ một lựa chọn thiếu thận trọng ở giai đoạn đầu cũng có thể tạo ra hệ quả kéo dài nhiều năm, không chỉ với doanh nghiệp mà còn với người mua và khu vực nơi dự án được phát triển."
+    },
+    {
+      type: "text",
+      content: "Vì thế, với một chủ đầu tư mới, “đi chậm” đôi khi không phải biểu hiện của sự dè dặt, mà là cách để xây một nền móng đủ chắc trước khi đi xa. Đi chậm trước hết là dành thời gian để hiểu đúng vùng đất."
     },
     {
       type: "image",
-      src: "https://drive.google.com/file/d/1MvY8LV4nKWzGYvHR5Sm3u8g20RmX2N2P/view?usp=drive_link",
-      alt: "Hoạt động tư vấn bất động sản tại Nam Sơn Land"
+      src: "https://drive.google.com/file/d/19RWVU3bghP49wBJw2VEJU9LXn_VidT9B/view?usp=drive_link",
+      alt: "Chiến lược đi chậm để xây dựng nền móng vững chắc"
     },
     {
       type: "text",
-      content:
-        "Đó cũng là điểm khiến tư vấn trở thành một năng lực thương hiệu, chứ không chỉ là kỹ năng giao tiếp của đội ngũ bán hàng. Một doanh nghiệp bất động sản có năng lực tư vấn cần biết cách đặt câu hỏi trước khi đưa ra khuyến nghị. Khách hàng mua để ở sẽ quan tâm đến môi trường sống, kết nối, tiện ích và sự ổn định lâu dài. Nhà đầu tư quan tâm nhiều hơn đến khả năng khai thác, tính thanh khoản, biên độ kỳ vọng và chu kỳ thị trường. Người mua tích sản lại cần sự an toàn, tính bền vững và khả năng giữ giá trong dài hạn. Mỗi nhóm nhu cầu khác nhau cần một cách phân tích khác nhau."
+      content: "Một khu vực có thể được đánh giá cao nhờ hạ tầng, vị trí hay quy hoạch tương lai. Nhưng nếu thiếu dân cư, thiếu nhu cầu ở thực hoặc chưa hình thành hoạt động thương mại, những lợi thế ấy vẫn cần thêm thời gian để chuyển hóa thành giá trị. Chủ đầu tư vì vậy không thể chỉ nhìn vào điều một khu đất có thể trở thành, mà còn phải hiểu điều khu vực ấy đang thực sự cần ở thời điểm hiện tại."
     },
     {
       type: "text",
-      content:
-        "Với Nam Sơn Land, xây dựng vai trò tư vấn cũng là cách để doanh nghiệp tạo sự khác biệt trong giai đoạn khởi nguồn thương hiệu. Thay vì chỉ xuất hiện như một đơn vị đưa sản phẩm ra thị trường, Nam Sơn Land có thể từng bước định hình mình như một doanh nghiệp giúp thị trường hiểu sản phẩm đúng hơn. Điều này đặc biệt quan trọng trong bối cảnh bất động sản không còn là cuộc chơi của những kỳ vọng ngắn hạn, mà ngày càng đòi hỏi sự tỉnh táo, dữ liệu và khả năng kiểm chứng."
+      content: "Đi chậm cũng là quá trình kiểm tra sự phù hợp giữa vị trí và sản phẩm."
     },
     {
       type: "text",
-      content:
-        "Tư vấn tốt không có nghĩa là làm cho sản phẩm trở nên hoàn hảo trong mắt người mua. Ngược lại, tư vấn có trách nhiệm là giúp khách hàng nhìn thấy cả điểm mạnh, điều kiện phù hợp và những yếu tố cần tìm hiểu kỹ hơn. Một khu vực có thể có dư địa phát triển, nhưng dư địa đó cần được đặt cạnh tiến độ hạ tầng, mật độ dân cư, sức mua và hoạt động thương mại thực tế. Một dự án có thể có nhiều lợi thế, nhưng lợi thế chỉ thật sự có giá trị khi phù hợp với nhu cầu và năng lực tài chính của người sở hữu."
+      content: "Không phải khu đất nào cũng phù hợp để phát triển cùng một loại hình. Có nơi cần một không gian ở được quy hoạch đồng bộ; có nơi phù hợp với sản phẩm thương mại; cũng có nơi chỉ nên phát triển khi hạ tầng và dân cư đã đạt đến một mức độ nhất định. Nếu sản phẩm được xây dựng từ một mô hình có sẵn thay vì xuất phát từ nhu cầu thực, dự án có thể đẹp về hình thức nhưng khó tạo được sức sống lâu dài."
+    },
+    {
+      type: "text",
+      content: "Một chủ đầu tư mới càng cần thận trọng với pháp lý và thông tin truyền thông."
+    },
+    {
+      type: "text",
+      content: "Trong bất động sản, có những điều cần nhiều thời gian để hoàn thiện nhưng lại rất dễ bị đẩy nhanh bằng ngôn từ. Quy hoạch dự kiến có thể được kể như một tương lai chắc chắn. Hình ảnh định hướng có thể bị nhìn nhận như hạng mục đã hình thành. Kỳ vọng về giá trị đôi khi cũng dễ bị biến thành cam kết."
     },
     {
       type: "image",
-      src: "https://drive.google.com/file/d/1gCeUfpCwFGZu8V4C9ULWnPcaqtl4lYNh/view?usp=drive_link",
-      alt: "Tư vấn bất động sản dựa trên giá trị thực và trách nhiệm"
+      src: "https://drive.google.com/file/d/1u1-QVcr_qauOjwnq8G9fusxQG4MGVdbp/view?usp=drive_link",
+      alt: "Thận trọng và minh bạch trong thông tin pháp lý"
     },
     {
       type: "text",
-      content:
-        "Từ góc nhìn thương hiệu, đây là con đường không nhanh nhưng bền. Niềm tin trong bất động sản không được tạo ra chỉ bằng thông điệp đẹp, mà bằng cách doanh nghiệp lặp lại những việc đúng trong từng điểm chạm: cung cấp thông tin rõ ràng, phân tích đúng mức, không biến tiềm năng thành cam kết và không đẩy kỳ vọng vượt quá cơ sở hiện có. Khi những nguyên tắc ấy được duy trì, tư vấn không còn là một hoạt động phụ trợ, mà trở thành một phần trong bản sắc vận hành của doanh nghiệp."
+      content: "Đi chậm trong trường hợp này là biết giữ khoảng cách cần thiết giữa điều doanh nghiệp kỳ vọng và điều đã đủ cơ sở để công bố. Sự rõ ràng có thể không tạo ra hiệu ứng nhanh bằng những lời hứa lớn, nhưng lại giúp doanh nghiệp tránh đánh đổi niềm tin lấy sự chú ý ngắn hạn."
     },
     {
       type: "text",
-      content:
-        "Sau cùng, điều Nam Sơn Land cần xây không chỉ là khả năng phân phối sản phẩm, mà là năng lực giúp thị trường tiếp cận bất động sản một cách rõ ràng và tỉnh táo hơn. Khi tư vấn được đặt đúng vị trí, doanh nghiệp không chỉ kết nối sản phẩm với người mua, mà còn góp phần xây dựng niềm tin bằng sự thấu hiểu, trách nhiệm thông tin và giá trị thực. Đó cũng là nền tảng để Nam Sơn Land từng bước khẳng định hình ảnh một doanh nghiệp bất động sản đáng tin trong hành trình phát triển dài hạn."
+      content: "Tuy nhiên, đi chậm không đồng nghĩa với chậm trễ."
+    },
+    {
+      type: "text",
+      content: "Đây là ranh giới cần được nhìn nhận thẳng thắn. Nếu thời gian được sử dụng để nghiên cứu kỹ hơn, hoàn thiện hồ sơ, chuẩn bị nguồn lực và nâng cao chất lượng triển khai, sự thận trọng ấy có giá trị. Nhưng nếu “đi chậm” trở thành lý do để trì hoãn trách nhiệm, thiếu minh bạch về tiến độ hoặc không đưa ra được kết quả cụ thể, nó không còn là chiến lược dài hạn."
+    },
+    {
+      type: "text",
+      content: "Bất động sản cuối cùng vẫn là lĩnh vực được đánh giá bằng năng lực thực thi."
+    },
+    {
+      type: "text",
+      content: "Một chủ đầu tư có thể nói về tầm nhìn, nhưng thị trường sẽ nhìn vào cách dự án được triển khai. Có thể nói về phát triển bền vững, nhưng cư dân sẽ đánh giá qua chất lượng quy hoạch và trải nghiệm sống. Có thể nói về niềm tin, nhưng khách hàng sẽ kiểm chứng qua tính nhất quán giữa thông tin, tiến độ và trách nhiệm của doanh nghiệp."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/1HAZLDryz6LbkKBlUUFL1sgSBDH8AwVzs/view?usp=drive_link",
+      alt: "Năng lực thực thi định hình giá trị thương hiệu Hưng Thái Property"
+    },
+    {
+      type: "text",
+      content: "With Hưng Thái Property, lựa chọn đi từng bước chắc chắn vì thế nên được hiểu như một nguyên tắc phát triển, thay vì một tuyên bố mang tính hình ảnh. Là một thương hiệu còn đang xây dựng vị thế, doanh nghiệp không nhất thiết phải xuất hiện thật lớn ngay từ đầu. Điều quan trọng hơn là mỗi bước đi đều có lý do, mỗi dự án đều được nhìn bằng nhu cầu thực và mỗi thông tin được đưa ra đều phù hợp với mức độ đã được kiểm chứng."
+    },
+    {
+      type: "text",
+      content: "Một hành trình dài hiếm khi được quyết định bởi bước đi nhanh nhất. Nó thường được tạo nên từ những lựa chọn đúng, được lặp lại đủ lâu."
+    },
+    {
+      type: "text",
+      content: "Và với một chủ đầu tư mới, đi xa không bắt đầu từ việc thị trường biết đến mình nhanh đến đâu, mà từ việc doanh nghiệp có đủ kiên nhẫn để xây nền móng trước khi kỳ vọng vào những giá trị lớn hơn."
     }
   ]
 },
 {
-  id: "giua-chu-dau-tu-nha-dau-tu-va-nguoi-mua-nam-son-land-dung-o-dau",
-  title: "Giữa chủ đầu tư, nhà đầu tư và người mua, Nam Sơn Land đứng ở đâu?",
-  image: "https://drive.google.com/file/d/1rrbkhReOB1ZR_rqWYLgXoUUMpt_TSdPv/view?usp=drive_link",
-  excerpt:
-    "Trong bất động sản, mỗi sản phẩm khi bước ra thị trường đều nằm trong một chuỗi quan hệ rộng hơn. Với Nam Sơn Land, vai trò của doanh nghiệp không chỉ là phân phối, mà còn là kết nối giữa chủ đầu tư, nhà đầu tư và người mua trên nền tảng giá trị thực và sự minh bạch.",
-  date: "13/07/2026",
+  id: "hung-thai-property-va-tu-duy-phat-trien-ben-vung-trong-tung-du-an",
+  title: "Hưng Thái Property và tư duy phát triển bền vững trong từng dự án",
+  image: "https://drive.google.com/file/d/1gl9VFjZwbzn61f5HUMtYTaz7Qj4s5M1B/view?usp=drive_link",
+  excerpt: "Trong bất động sản, “phát triển bền vững” cần nhiều hơn vài mảng xanh trên phối cảnh. Một dự án bền vững thực sự phải có khả năng thích nghi với nhu cầu sống, kinh doanh và vận hành hiệu quả trong dài hạn.",
+  date: "15/07/2026",
   href: "#",
   contentBlocks: [
     {
       type: "text",
-      content:
-        "Trong bất động sản, mỗi sản phẩm khi bước ra thị trường đều nằm trong một chuỗi quan hệ rộng hơn. Phía sau một dự án là tư duy phát triển, nguồn lực triển khai, định hướng quy hoạch và kỳ vọng của chủ đầu tư. Phía trước dự án là nhu cầu của người mua, khẩu vị của nhà đầu tư, khả năng hấp thụ của thị trường và những tiêu chuẩn ngày càng cao về thông tin, pháp lý, công năng và giá trị sử dụng."
+      content: "Trong bất động sản, “phát triển bền vững” là một khái niệm được nhắc đến ngày càng nhiều. Nhưng cũng chính vì được sử dụng quá thường xuyên, cụm từ này đôi khi bị thu hẹp thành vài mảng xanh trên phối cảnh, một công viên được đặt tên đẹp hay những thông điệp giàu cảm xúc về môi trường sống."
     },
     {
       type: "text",
-      content:
-        "Chính vì vậy, câu hỏi đặt ra cho một doanh nghiệp bất động sản không chỉ là “đang bán sản phẩm gì”, mà còn là “đang đứng ở đâu trong chuỗi giá trị đó”. Với Nam Sơn Land, vai trò này cần được nhìn rộng hơn một hoạt động phân phối đơn thuần. Doanh nghiệp đang từng bước xây dựng vị trí của mình như một điểm kết nối giữa sản phẩm, chủ đầu tư, nhà đầu tư và người mua trên nền tảng thông tin rõ ràng, kỳ vọng phù hợp và giá trị thực."
+      content: "Trong khi đó, một dự án bền vững cần nhiều hơn thế."
+    },
+    {
+      type: "text",
+      content: "Bền vững không chỉ nằm ở việc dự án có bao nhiêu cây xanh, mà còn ở cách những không gian ấy được tổ chức, sử dụng và duy trì sau khi cư dân về ở. Không chỉ nằm ở vẻ đẹp của kiến trúc, mà còn ở khả năng thích nghi với nhu cầu sống, kinh doanh và vận hành trong dài hạn. Một dự án có thể tạo được ấn tượng trong giai đoạn giới thiệu, nhưng giá trị thực sự chỉ được nhìn thấy khi đời sống bắt đầu diễn ra bên trong nó."
     },
     {
       type: "image",
-      src: "https://drive.google.com/file/d/1rrbkhReOB1ZR_rqWYLgXoUUMpt_TSdPv/view?usp=drive_link",
-      alt: "Nam Sơn Land kết nối chủ đầu tư, nhà đầu tư và người mua"
+      src: "https://drive.google.com/file/d/1gl9VFjZwbzn61f5HUMtYTaz7Qj4s5M1B/view?usp=drive_link",
+      alt: "Tư duy phát triển bền vững thực tế tại các dự án Hưng Thái Property"
     },
     {
       type: "text",
-      content:
-        "Ở phía chủ đầu tư, điều quan trọng không chỉ là đưa sản phẩm ra thị trường, mà là đưa sản phẩm đến đúng nhóm nhu cầu, đúng bối cảnh và đúng cách tiếp cận. Một dự án có thể sở hữu nhiều lợi thế, nhưng nếu thông tin được truyền tải thiếu trọng tâm, thị trường sẽ khó hiểu đúng giá trị. Ngược lại, khi sản phẩm được phân tích trong mối liên hệ với quy hoạch, hạ tầng, nhu cầu sử dụng và khả năng khai thác, giá trị của dự án sẽ được tiếp nhận một cách rõ ràng hơn."
+      content: "Đó cũng là nền tảng để Hưng Thái Property định hình tư duy phát triển bền vững trong từng dự án."
     },
     {
       type: "text",
-      content:
-        "Ở phía nhà đầu tư, bất động sản không chỉ là tài sản để mua, mà còn là một quyết định cần được cân nhắc trong dòng vốn, thời gian nắm giữ và kỳ vọng sinh lời. Nhà đầu tư ngày nay không còn dễ bị thuyết phục bởi những lời hứa tăng trưởng chung chung. Họ cần hiểu đâu là giá trị hiện hữu, đâu là dư địa cần thời gian kiểm chứng, đâu là yếu tố có thể tạo thanh khoản và đâu là rủi ro phải tính trước. Đây là lúc vai trò kết nối đầu tư cần đi cùng năng lực phân tích và trách nhiệm thông tin."
+      content: "Trước hết, sự bền vững cần bắt đầu từ quy hoạch."
     },
     {
       type: "text",
-      content:
-        "Ở phía người mua để ở, câu chuyện lại khác. Một sản phẩm phù hợp không chỉ nằm ở giá bán hay chính sách thanh toán, mà còn ở khả năng phục vụ cuộc sống thực tế: vị trí có thuận tiện không, môi trường sống có đủ ổn định không, tiện ích có đáp ứng nhu cầu gia đình không và tài sản đó có tạo cảm giác an tâm trong dài hạn hay không. Nếu nhà đầu tư quan tâm đến hiệu quả tài sản, người mua để ở lại cần nhiều hơn một nơi có thể gắn bó."
+      content: "Một khu đô thị không phải tập hợp của những căn nhà đứng cạnh nhau, mà là một tổng thể trong đó giao thông, không gian công cộng, khu ở, cảnh quan và hoạt động thương mại phải có sự liên kết hợp lý. Nếu quy hoạch chỉ tập trung tối đa vào diện tích kinh doanh mà thiếu đi khoảng thở cho cộng đồng, giá trị ngắn hạn có thể được tạo ra, nhưng chất lượng sống lâu dài sẽ khó được duy trì."
     },
     {
       type: "text",
-      content:
-        "Giữa những nhu cầu khác nhau đó, Nam Sơn Land không nên được nhìn như một bên đứng giữa để truyền thông tin một chiều. Vai trò đúng hơn là tổ chức điểm gặp giữa các bên: giúp sản phẩm được đặt trong đúng bối cảnh, giúp nhà đầu tư tiếp cận cơ hội bằng dữ liệu rõ hơn, giúp người mua hiểu tài sản bằng nhu cầu thật hơn và giúp thị trường nhìn nhận bất động sản một cách tỉnh táo hơn."
+      content: "Ngược lại, một quy hoạch tốt cần trả lời được những câu hỏi rất thực tế: cư dân di chuyển có thuận tiện không, trẻ nhỏ có không gian vui chơi hay không, người lớn tuổi có nơi nghỉ ngơi, hoạt động kinh doanh có bị tách khỏi dòng người và các khu chức năng có hỗ trợ lẫn nhau trong đời sống hằng ngày hay không."
+    },
+    {
+      type: "text",
+      content: "Bền vững không phải một lớp trang trí được bổ sung sau cùng. Nó phải xuất hiện ngay từ những nét đầu tiên của bản quy hoạch."
+    },
+    {
+      type: "text",
+      content: "Bên cạnh quy hoạch là sự phù hợp với nhu cầu thực của khu vực."
+    },
+    {
+      type: "text",
+      content: "Mỗi địa phương có một tốc độ phát triển, cấu trúc dân cư và thói quen sinh hoạt khác nhau. Một mô hình được đánh giá cao ở đô thị lớn chưa chắc phù hợp khi áp dụng nguyên vẹn tại một thị trường đang trong quá trình hình thành. Nếu phát triển dự án chỉ dựa trên xu hướng mà thiếu nghiên cứu về nhu cầu thực, sản phẩm có thể mới về hình thức nhưng xa lạ với chính cộng đồng sẽ sử dụng nó."
+    },
+    {
+      type: "text",
+      content: "Với Hưng Thái Property, tư duy phát triển bền vững cần được đặt trong mối quan hệ giữa dự án và vùng đất. Dự án bổ sung điều gì cho khu vực? Người dân đang thiếu một không gian sống đồng bộ, một khu thương mại có tổ chức hay một môi trường thuận tiện hơn cho gia đình? Loại hình sản phẩm nào phù hợp với khả năng sử dụng, khai thác và tích lũy tài sản của nhóm khách hàng tại đây?"
     },
     {
       type: "image",
-      src: "https://drive.google.com/file/d/1c3_-5FBdnkI_o4FrqIYfeclkua1LjWf9/view?usp=drive_link",
-      alt: "Nam Sơn Land tạo giá trị kết nối trong hệ sinh thái bất động sản"
+      src: "https://drive.google.com/file/d/1f_DaEHq6LP-DWbtY_WeHY69DeQqw_SC5/view?usp=drive_link",
+      alt: "Quy hoạch không gian đồng bộ hướng tới giá trị sử dụng thực"
     },
     {
       type: "text",
-      content:
-        "Điều này đòi hỏi doanh nghiệp phải giữ được sự cân bằng. Nếu chỉ nói theo góc nhìn của sản phẩm, bài toán thị trường dễ bị một chiều. Nếu chỉ chạy theo kỳ vọng của nhà đầu tư, giá trị sử dụng thực tế có thể bị xem nhẹ. Nếu chỉ tập trung vào cảm xúc của người mua, những yếu tố cần kiểm chứng như pháp lý, hạ tầng, thanh khoản hay khả năng khai thác lại dễ bị bỏ qua. Một vai trò kết nối có trách nhiệm cần dung hòa được cả ba phía đó."
+      content: "Khi những câu hỏi ấy được trả lời từ đầu, dự án sẽ có cơ hội hình thành sức sống thật, thay vì phụ thuộc quá nhiều vào hiệu ứng truyền thông hay kỳ vọng tăng giá."
     },
     {
       type: "text",
-      content:
-        "Với Nam Sơn Land, đây cũng là một phần trong quá trình xây dựng niềm tin thương hiệu. Là một doanh nghiệp bất động sản đang ở giai đoạn khởi nguồn, Nam Sơn Land cần được thị trường nhận diện không bằng những tuyên bố về quy mô, mà bằng cách doanh nghiệp tổ chức thông tin, lựa chọn sản phẩm, phân tích cơ hội và kết nối các bên bằng sự minh bạch. Niềm tin không đến từ việc đứng ở vị trí trung gian, mà đến từ việc tạo ra giá trị thực trong từng điểm kết nối."
+      content: "Một lớp khác của phát triển bền vững nằm ở khả năng vận hành."
     },
     {
       type: "text",
-      content:
-        "Sau cùng, giữa chủ đầu tư, nhà đầu tư và người mua, Nam Sơn Land không chỉ đứng ở vai trò cầu nối. Điều quan trọng hơn là doanh nghiệp cần từng bước chứng minh khả năng làm cho sự kết nối ấy trở nên có giá trị: rõ ràng hơn về thông tin, thực tế hơn về kỳ vọng và bền vững hơn trong cách tiếp cận thị trường bất động sản. Đó là nền tảng để Nam Sơn Land xây dựng hình ảnh một doanh nghiệp bất động sản đáng tin trong hành trình dài hạn."
+      content: "Cây xanh chỉ tạo ra giá trị khi được chăm sóc. Tiện ích chỉ có ý nghĩa khi có thể sử dụng. Không gian chung chỉ thật sự trở thành tài sản của cộng đồng khi được tổ chức và duy trì bằng một cơ chế phù hợp. Bởi vậy, những gì xuất hiện trên bản vẽ cần được nhìn cả ở chi phí, khả năng quản lý và mức độ hữu ích khi đi vào thực tế."
+    },
+    {
+      type: "text",
+      content: "Đây cũng là điểm cần được phản biện thẳng thắn. Một dự án nhiều tiện ích chưa chắc đã tốt hơn nếu các tiện ích đó thiếu nhu cầu sử dụng hoặc trở thành gánh nặng vận hành về sau. Một không gian đẹp chưa chắc đã bền vững nếu khó bảo trì, nhanh xuống cấp hoặc không phù hợp với nếp sống của cư dân."
+    },
+    {
+      type: "text",
+      content: "Bền vững không nằm ở số lượng hạng mục, mà ở chất lượng và khả năng tồn tại của từng hạng mục theo thời gian."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/1wLV51OvKPkWnS_05S7LIcWQqCt-T8_e5/view?usp=drive_link",
+      alt: "Duy trì giá trị dự án qua năng lực vận hành lâu dài"
+    },
+    {
+      type: "text",
+      content: "Sau cùng, phát triển bền vững còn là trách nhiệm của doanh nghiệp với giá trị mình tạo ra. Đó là sự nhất quán giữa định hướng, chất lượng triển khai và thông tin được công bố. Là việc không biến hình ảnh tương lai thành một lời hứa vượt quá thực tế. Là cách doanh nghiệp nhìn một dự án không chỉ trong giai đoạn bán hàng, mà trong cả hành trình khi cộng đồng cư dân bắt đầu hình thành."
+    },
+    {
+      type: "text",
+      content: "Với Hưng Thái Property, tư duy phát triển bền vững không nên được xem là một khái niệm để định vị hình ảnh. Phù hợp hơn, đó là một hệ tiêu chuẩn cần được kiểm chứng qua từng lựa chọn về vị trí, quy hoạch, sản phẩm và cách dự án vận hành sau này."
+    },
+    {
+      type: "text",
+      content: "Bởi một dự án chỉ thực sự bền vững khi những giá trị của nó vẫn còn ý nghĩa sau khi truyền thông đã lắng xuống, khi cư dân đã trở về nhà và khi vùng đất ấy bắt đầu mang một nhịp sống mới."
     }
   ]
 },
 {
-  id: "truoc-trong-va-sau-giao-dich-nam-son-land-dong-hanh-the-nao",
-  title: "Trước, trong và sau giao dịch, Nam Sơn Land đồng hành thế nào?",
-  image: "https://drive.google.com/file/d/1JIVe4HN4gNQC-84-HWbKvORMKTkINkmw/view?usp=drive_link",
-  excerpt:
-    "Trong bất động sản, một giao dịch không bắt đầu ở thời điểm ký hợp đồng và cũng không kết thúc ngay sau khi sản phẩm được lựa chọn. Với Nam Sơn Land, sự đồng hành cùng khách hàng cần được đặt trong cả ba giai đoạn: trước, trong và sau giao dịch.",
-  date: "13/07/2026",
+  id: "tieu-chuan-lua-chon-vi-tri-phat-trien-du-an-cua-hung-thai-property",
+  title: "Tiêu chuẩn lựa chọn vị trí phát triển dự án của Hưng Thái Property",
+  image: "https://drive.google.com/file/d/1mnOuWVlaB5Fgr-E6S5ftMXJkpmg7CiH4/view?usp=drive_link",
+  excerpt: "Trong bất động sản, một vị trí phù hợp để phát triển dự án cần được nhìn sâu hơn câu hỏi “gần đâu”. Điều quan trọng hơn là vị trí ấy đang kết nối với dòng người nào, phục vụ nhu cầu gì và có đủ điều kiện để hình thành một nhịp sống thực tế.",
+  date: "15/07/2026",
   href: "#",
   contentBlocks: [
     {
       type: "text",
-      content:
-        "Trong bất động sản, một giao dịch không bắt đầu ở thời điểm ký hợp đồng và cũng không kết thúc ngay sau khi sản phẩm được lựa chọn. Phía sau mỗi quyết định là cả một quá trình tìm hiểu, cân nhắc, so sánh, kiểm chứng và đặt niềm tin. Với những tài sản có giá trị lớn, khách hàng không chỉ cần một sản phẩm phù hợp, mà còn cần cảm giác được đồng hành đủ rõ ràng trong suốt hành trình ra quyết định."
+      content: "Trong bất động sản, vị trí luôn là một trong những yếu tố được nhắc đến đầu tiên. Nhưng cũng chính vì được nhắc quá nhiều, khái niệm này đôi khi bị giản lược thành những khoảng cách trên bản đồ: gần trung tâm, gần đường lớn, gần khu hành chính hay nằm trên một trục giao thông quan trọng."
     },
     {
       type: "text",
-      content:
-        "Đây cũng là lý do vai trò của một doanh nghiệp bất động sản ngày nay không nên chỉ được nhìn ở khoảnh khắc bán hàng. Thị trường đã thay đổi, khách hàng cũng thận trọng hơn. Họ quan tâm nhiều hơn đến thông tin dự án, pháp lý cần kiểm chứng, tính phù hợp với nhu cầu, khả năng khai thác, dòng tiền, môi trường sống và những yếu tố có thể ảnh hưởng đến giá trị tài sản trong dài hạn."
-    },
-    {
-      type: "text",
-      content:
-        "Với Nam Sơn Land, hành trình đồng hành cùng khách hàng cần được đặt trong một cấu trúc rộng hơn: trước giao dịch, trong giao dịch và sau giao dịch. Đây không chỉ là quy trình chăm sóc khách hàng, mà còn là cách một doanh nghiệp bất động sản xây dựng niềm tin bằng trách nhiệm, sự thấu hiểu nhu cầu và khả năng hỗ trợ thông tin giúp khách hàng nhìn tài sản một cách tỉnh táo hơn."
+      content: "Trong khi đó, một vị trí phù hợp để phát triển dự án cần được nhìn sâu hơn câu hỏi “gần đâu”."
     },
     {
       type: "image",
-      src: "https://drive.google.com/file/d/1JIVe4HN4gNQC-84-HWbKvORMKTkINkmw/view?usp=drive_link",
-      alt: "Nam Sơn Land đồng hành cùng khách hàng trước giao dịch"
+      src: "https://drive.google.com/file/d/1mnOuWVlaB5Fgr-E6S5ftMXJkpmg7CiH4/view?usp=drive_link",
+      alt: "Tiêu chuẩn đánh giá và lựa chọn vị trí dự án của Hưng Thái Property"
     },
     {
       type: "text",
-      content:
-        "Trước giao dịch, điều quan trọng nhất là giúp khách hàng hiểu đúng bối cảnh. Một người mua để ở sẽ cần những dữ liệu khác với một nhà đầu tư. Một người mua tích sản dài hạn sẽ quan tâm khác với người tìm kiếm cơ hội khai thác thương mại. Nếu mọi khách hàng đều được tiếp cận bằng cùng một cách nói, thông tin có thể nhiều nhưng chưa chắc đã có ích. Vì vậy, đồng hành ở giai đoạn đầu không phải là thúc đẩy quyết định nhanh hơn, mà là giúp khách hàng đặt đúng câu hỏi: mình mua để làm gì, sản phẩm nào phù hợp, yếu tố nào đã rõ và yếu tố nào cần tìm hiểu kỹ hơn."
+      content: "Điều quan trọng hơn là vị trí ấy đang kết nối với dòng người nào, phục vụ nhu cầu gì và có đủ điều kiện để hình thành một nhịp sống thực tế hay không. Một khu đất có thể nằm trên tuyến đường rộng, nhưng nếu thiếu dân cư, thiếu hoạt động thương mại hoặc chưa có nhu cầu sử dụng rõ ràng, lợi thế vị trí vẫn cần thêm thời gian để chuyển hóa thành giá trị."
     },
     {
       type: "text",
-      content:
-        "Trong giao dịch, sự đồng hành cần được thể hiện ở tính rõ ràng và nhất quán. Bất động sản là lĩnh vực có nhiều lớp thông tin: chính sách bán hàng, tiến độ thanh toán, hồ sơ pháp lý, quy trình đặt cọc, ký kết, quyền lợi và nghĩa vụ của các bên. Nếu thông tin được truyền tải thiếu hệ thống, khách hàng dễ rơi vào cảm giác mơ hồ, dù sản phẩm có thể vẫn đáng quan tâm. Với Nam Sơn Land, đây là giai đoạn mà sự minh bạch cần được đặt lên hàng đầu: giải thích đúng mức, cung cấp thông tin đúng trọng tâm và không biến kỳ vọng thành cam kết khi chưa có cơ sở kiểm chứng."
+      content: "Đó cũng là cách Hưng Thái Property định hướng nhìn nhận việc lựa chọn địa điểm phát triển dự án: không chỉ đánh giá một khu đất bằng những gì đang hiện diện trên bản đồ, mà còn bằng khả năng nó có thể đóng góp vào đời sống, thương mại và quá trình phát triển dài hạn của khu vực."
     },
     {
       type: "text",
-      content:
-        "Sau giao dịch, sự đồng hành lại mang một ý nghĩa khác. Khách hàng không chỉ cần được hỗ trợ để hoàn tất thủ tục, mà còn cần tiếp tục được cập nhật, hướng dẫn và kết nối với những thông tin liên quan đến tài sản của mình. Với người mua để ở, đó có thể là quá trình chuẩn bị nhận bàn giao, hoàn thiện không gian sống hoặc nắm bắt các tiện ích vận hành. Với nhà đầu tư, đó có thể là việc theo dõi thị trường, đánh giá khả năng khai thác hoặc nhìn lại hiệu quả của quyết định đã đưa ra. Dù ở nhóm nhu cầu nào, sự đồng hành sau giao dịch đều góp phần kéo dài niềm tin vượt ra ngoài một lần mua bán."
+      content: "Trước hết, vị trí cần có sự kết nối với nhu cầu thực."
+    },
+    {
+      type: "text",
+      content: "Một dự án chỉ có thể tạo ra sức sống khi có người muốn ở, muốn kinh doanh hoặc muốn sử dụng tài sản trong dài hạn. Vì vậy, bên cạnh quy hoạch tương lai, điều cần được xem xét là cấu trúc dân cư hiện hữu, tốc độ đô thị hóa, thói quen sinh hoạt và những khoảng trống mà thị trường địa phương chưa đáp ứng đầy đủ."
     },
     {
       type: "image",
-      src: "https://drive.google.com/file/d/18CRtWMlSirXZ66VV4N9IO0bDYggYIvcK/view?usp=drive_link",
-      alt: "Nam Sơn Land đồng hành cùng khách hàng sau giao dịch"
+      src: "https://drive.google.com/file/d/10eRtcgO5lRPEnlzq3tHguMB8TD1AuwoB/view?usp=drive_link",
+      alt: "Phân tích cấu trúc dân cư và nhu cầu thực tại khu vực"
     },
     {
       type: "text",
-      content:
-        "Điều đáng nói là, đồng hành không có nghĩa là thay khách hàng quyết định. Một doanh nghiệp bất động sản có trách nhiệm không nên tạo cảm giác mọi sản phẩm đều phù hợp với mọi người. Ngược lại, giá trị của sự đồng hành nằm ở việc giúp khách hàng hiểu rõ hơn lựa chọn của mình: đâu là lợi thế, đâu là điều kiện phù hợp, đâu là rủi ro cần cân nhắc và đâu là kỳ vọng cần được đặt đúng chỗ."
+      content: "Có khu vực đang thiếu một không gian sống được quy hoạch đồng bộ. Có nơi cần thêm hoạt động thương mại, dịch vụ để phục vụ dân cư xung quanh. Cũng có khu vực phù hợp hơn với nhu cầu tích sản dài hạn thay vì khai thác tức thời. Hiểu được sự khác biệt ấy là bước đầu để doanh nghiệp lựa chọn đúng loại hình sản phẩm, thay vì áp một mô hình có sẵn lên mọi vùng đất."
     },
     {
       type: "text",
-      content:
-        "Với một thương hiệu đang ở giai đoạn khởi nguồn như Nam Sơn Land, hành trình trước, trong và sau giao dịch cũng là hành trình tự xây dựng uy tín. Niềm tin không thể được tạo ra chỉ bằng hình ảnh thương hiệu hay những lời giới thiệu đẹp. Niềm tin cần được tích lũy qua từng điểm chạm nhỏ: một thông tin được giải thích rõ, một chính sách được làm sáng nghĩa, một nhu cầu được lắng nghe đúng và một kỳ vọng được cân chỉnh kịp thời."
+      content: "Tiêu chuẩn thứ hai nằm ở khả năng kết nối thực tế."
     },
     {
       type: "text",
-      content:
-        "Sau cùng, đồng hành cùng khách hàng trong bất động sản không phải là một khẩu hiệu chăm sóc. Đó là cách doanh nghiệp chứng minh mình hiểu giá trị của mỗi quyết định tài sản. Khi Nam Sơn Land đặt sự đồng hành vào cả ba giai đoạn trước, trong và sau giao dịch, thương hiệu không chỉ hướng đến việc kết nối sản phẩm với khách hàng, mà còn hướng đến việc xây dựng một mối quan hệ dài hạn dựa trên sự rõ ràng, trách nhiệm và niềm tin."
+      content: "Một tuyến đường chỉ thật sự có giá trị khi nó giúp con người di chuyển thuận tiện, rút ngắn thời gian tiếp cận và tạo điều kiện cho giao thương diễn ra. Vì vậy, hạ tầng hiện hữu cần được nhìn song song với những định hướng trong tương lai. Những tuyến giao thông đang được sử dụng, mật độ lưu thông, khả năng tiếp cận các khu dân cư, trường học, chợ, bệnh viện hay trung tâm hành chính đều là những yếu tố có ảnh hưởng trực tiếp đến giá trị sử dụng của vị trí."
+    },
+    {
+      type: "text",
+      content: "Quy hoạch tương lai có thể mở ra dư địa mới, nhưng không nên được xem như lời bảo chứng tuyệt đối. Một vị trí tốt cần có nền tảng đủ rõ ở hiện tại, đồng thời có khả năng hưởng lợi hợp lý nếu các định hướng hạ tầng được triển khai đúng tiến độ."
+    },
+    {
+      type: "text",
+      content: "Bên cạnh kết nối là sự phù hợp giữa vị trí và công năng dự án."
+    },
+    {
+      type: "text",
+      content: "Không phải khu đất nằm trên đường lớn nào cũng phù hợp để phát triển sản phẩm thương mại. Không phải nơi gần trung tâm nào cũng mặc nhiên trở thành lựa chọn tốt để an cư. Giá trị vị trí chỉ thực sự được phát huy khi loại hình sản phẩm, quy mô dự án và cách tổ chức không gian phù hợp với nhịp sống xung quanh."
+    },
+    {
+      type: "text",
+      content: "Một khu ở cần sự yên tĩnh, an toàn và thuận tiện cho sinh hoạt. Một sản phẩm kinh doanh cần dòng người, khả năng nhận diện và tiếp cận. Một tài sản tích sản dài hạn cần nền tảng dân cư, quy hoạch và nhu cầu có khả năng duy trì qua thời gian. Nếu lựa chọn sai công năng, một vị trí tưởng như thuận lợi vẫn có thể trở nên kém hiệu quả khi đi vào sử dụng."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/17Zt8MaFcPbQC_yV8xgI-EiNfffWg7UCP/view?usp=drive_link",
+      alt: "Sự tương thích giữa công năng dự án với không gian sống xung quanh"
+    },
+    {
+      type: "text",
+      content: "Với Hưng Thái Property, việc lựa chọn vị trí vì thế không chỉ là tìm nơi có khả năng phát triển, mà còn là tìm nơi dự án có thể bổ sung một giá trị phù hợp."
+    },
+    {
+      type: "text",
+      content: "Dự án ấy sẽ giải quyết điều gì cho khu vực? Có hòa vào đời sống hiện hữu hay tạo nên một khoảng tách biệt? Có hỗ trợ hoạt động thương mại, nâng cao chất lượng sống và tạo thêm lựa chọn cho người dân hay không? Đây là những câu hỏi cần được đặt ra trước khi một khu đất được nhìn nhận như cơ hội phát triển."
+    },
+    {
+      type: "text",
+      content: "Tất nhiên, một vị trí được đánh giá tốt vẫn không thể thay thế cho quy hoạch hợp lý, pháp lý rõ ràng và năng lực triển khai. Thực tế cho thấy không ít dự án sở hữu địa điểm thuận lợi nhưng chưa tạo được giá trị tương xứng vì sản phẩm thiếu phù hợp, thông tin chưa rõ ràng hoặc quá phụ thuộc vào kỳ vọng tăng giá."
+    },
+    {
+      type: "text",
+      content: "Bởi vậy, tiêu chuẩn lựa chọn vị trí không nên dừng ở khả năng tạo sức hút trong giai đoạn đầu. Nó cần được đặt trong một tầm nhìn dài hơn: nơi này có thể phục vụ ai, được sử dụng như thế nào và giá trị nào vẫn còn ý nghĩa khi thị trường bước sang một chu kỳ khác."
+    },
+    {
+      type: "text",
+      content: "Vị trí không chỉ là nơi một dự án được đặt xuống."
+    },
+    {
+      type: "text",
+      content: "Đó là điểm khởi đầu quyết định cách dự án kết nối với con người, với khu vực và với những nhu cầu sẽ tiếp tục hình thành trong tương lai. Với Hưng Thái Property, lựa chọn đúng vị trí vì thế cũng chính là lựa chọn đúng nền tảng để mỗi dự án có thể tạo ra giá trị thực, thay vì chỉ tạo nên một câu chuyện hấp dẫn trên bản đồ."
+    }
+  ]
+},
+{
+  id: "minh-bach-phap-ly-nen-tang-niem-tin-trong-moi-du-an-bat-dong-san",
+  title: "Minh bạch pháp lý – Nền tảng niềm tin trong mỗi dự án bất động sản",
+  image: "https://drive.google.com/file/d/1ju6ZnP_F0b4Cxf4ZK1UCBP6fp62sb31N/view?usp=drive_link",
+  excerpt: "Trong bất động sản, trước khi nghĩ đến khả năng an cư, kinh doanh hay tích sản, người mua thường phải đối diện với một câu hỏi căn bản hơn: những giá trị đang được giới thiệu đã có cơ sở pháp lý rõ ràng đến đâu?",
+  date: "15/07/2026",
+  href: "#",
+  contentBlocks: [
+    {
+      type: "text",
+      content: "Trong bất động sản, một dự án có thể thu hút sự chú ý bằng vị trí, quy hoạch hay những hình ảnh được đầu tư chỉn chu. Nhưng trước khi nghĩ đến khả năng an cư, kinh doanh hay tích sản, người mua thường phải đối diện với một câu hỏi căn bản hơn: những giá trị đang được giới thiệu đã có cơ sở pháp lý rõ ràng đến đâu?"
+    },
+    {
+      type: "text",
+      content: "Đây không chỉ là mối quan tâm mang tính thủ tục. Phía sau mỗi quyết định sở hữu bất động sản thường là khoản tài chính lớn, được tích lũy qua nhiều năm hoặc gắn với kế hoạch dài hạn của cả gia đình. Vì vậy, sự an tâm không thể chỉ đến từ lời tư vấn hay kỳ vọng về tương lai. Nó cần được xây dựng trên những thông tin minh bạch, có thể đối chiếu và được diễn đạt đúng với mức độ pháp lý thực tế của dự án."
+    },
+    {
+      type: "text",
+      content: "Minh bạch pháp lý, vì thế, không nên là phần thông tin được bổ sung khi khách hàng đặt câu hỏi. Đó cần là nền tảng xuất hiện ngay từ cách một dự án được giới thiệu ra thị trường."
+    },
+    {
+      type: "text",
+      content: "Sự minh bạch trước hết nằm ở việc nói rõ dự án đang ở đâu trong quá trình hoàn thiện hồ sơ. Văn bản nào đã được ban hành, thủ tục nào đang được thực hiện và nội dung nào vẫn cần thêm thời gian để hoàn tất đều phải được phân biệt cụ thể. Khi thông tin được trình bày đúng mức, khách hàng có cơ sở để đánh giá và đưa ra quyết định phù hợp với khả năng chấp nhận rủi ro của mình."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/1ju6ZnP_F0b4Cxf4ZK1UCBP6fp62sb31N/view?usp=drive_link",
+      alt: "Minh bạch pháp lý là nền tảng vững chắc của niềm tin"
+    },
+    {
+      type: "text",
+      content: "Ngược lại, nếu những khái niệm pháp lý phức tạp chỉ được diễn giải bằng vài cụm từ như “đầy đủ”, “hoàn thiện” hay “an toàn tuyệt đối”, người mua rất dễ hiểu nhiều hơn những gì tài liệu thực tế có thể chứng minh."
+    },
+    {
+      type: "text",
+      content: "Minh bạch cũng là sự rõ ràng giữa tên thương mại và tên pháp lý của dự án; giữa đơn vị chủ đầu tư, đơn vị phát triển, đơn vị phân phối và các bên tham gia. Mỗi chủ thể có một vai trò, phạm vi trách nhiệm và nghĩa vụ khác nhau. Việc xác định đúng những vai trò ấy giúp khách hàng hiểu mình đang làm việc với ai, thông tin nào đến từ nguồn nào và đơn vị nào chịu trách nhiệm cho từng nội dung được công bố. Bên cạnh đó, cần có ranh giới rõ ràng giữa hiện trạng và định hướng."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/1YMDejK3tJva5zbfcC2VCVNraM62quYUe/view?usp=drive_link",
+      alt: "Sự rõ ràng giữa hiện trạng thực tế và định hướng tương lai"
+    },
+    {
+      type: "text",
+      content: "Một bản phối cảnh có thể giúp người mua hình dung về không gian trong tương lai, nhưng không nên được nhìn nhận như công trình đã hoàn thành. Một hạ tầng đang được đề xuất hoặc dự kiến triển khai không thể được kể như lợi thế chắc chắn đã hiện hữu. Tương tự, kỳ vọng về khả năng khai thác hay gia tăng giá trị không nên được chuyển thành cam kết nếu chưa có căn cứ đủ vững chắc."
+    },
+    {
+      type: "text",
+      content: "Việc phân biệt rõ những giới hạn ấy không khiến dự án trở nên kém hấp dẫn. Ngược lại, nó cho thấy doanh nghiệp tôn trọng quyền được biết và quyền tự đánh giá của khách hàng."
+    },
+    {
+      type: "text",
+      content: "Trong định hướng phát triển của Hưng Thái Property, minh bạch pháp lý vì thế cần được nhìn rộng hơn việc cung cấp hồ sơ khi có yêu cầu. Đó còn là cách doanh nghiệp lựa chọn ngôn ngữ truyền thông, xây dựng tài liệu bán hàng và thống nhất thông tin giữa các bộ phận trước khi đưa ra thị trường."
+    },
+    {
+      type: "text",
+      content: "Điều gì đã đủ căn cứ thì cần được trình bày rõ ràng. Điều gì là định hướng phải được gọi đúng là định hướng. Điều gì chưa thể khẳng định thì không nên được đẩy xa hơn bằng ngôn từ hấp dẫn."
+    },
+    {
+      type: "text",
+      content: "Tất nhiên, minh bạch thông tin không đồng nghĩa with việc mọi dự án đều không còn rủi ro. Bất động sản chịu ảnh hưởng từ nhiều yếu tố như thủ tục hành chính, tiến độ triển khai, điều kiện thị trường và năng lực thực thi. Một doanh nghiệp có trách nhiệm không phải là doanh nghiệp hứa rằng mọi việc sẽ luôn diễn ra thuận lợi, mà là doanh nghiệp không che giấu những giới hạn khách hàng cần biết trước khi quyết định."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/1vxZttgvRyxxZKmpIIKBYL5CfvNrLOG8f/view?usp=drive_link",
+      alt: "Tôn trọng khách hàng thông qua việc chia sẻ thông tin trung thực"
+    },
+    {
+      type: "text",
+      content: "Đây cũng là điểm tạo nên sự khác biệt giữa niềm tin được xây bằng cảm xúc và niềm tin có cơ sở. Cảm xúc có thể khiến người mua chú ý, nhưng chỉ sự rõ ràng mới giúp họ đi tiếp với tâm thế chủ động."
+    },
+    {
+      type: "text",
+      content: "Với một thương hiệu đang từng bước tạo dựng vị thế như Hưng Thái Property, minh bạch pháp lý không nên chỉ được xem là yêu cầu bắt buộc của quá trình phát triển dự án. Đó còn là một nguyên tắc xây dựng uy tín dài hạn."
+    },
+    {
+      type: "text",
+      content: "Bởi mỗi thông tin được công bố hôm nay đều có thể trở thành căn cứ để khách hàng nhìn lại doanh nghiệp trong tương lai. Khi lời giới thiệu nhất quán với hồ sơ, khi kỳ vọng được đặt đúng giới hạn và khi những vấn đề chưa hoàn thiện được chia sẻ một cách thẳng thắn, niềm tin sẽ không cần được tạo ra bằng những tuyên bố quá lớn."
+    },
+    {
+      type: "text",
+      content: "Trong bất động sản, pháp lý có thể được thể hiện qua hồ sơ và văn bản. Nhưng giá trị sâu hơn của sự minh bạch nằm ở cảm giác an tâm mà doanh nghiệp tạo ra cho người mua."
+    },
+    {
+      type: "text",
+      content: "Và đó cũng là nền móng cần thiết để một dự án không chỉ được thị trường quan tâm ở thời điểm giới thiệu, mà còn được ghi nhận bằng sự tin tưởng trong suốt hành trình phát triển về sau."
+    }
+  ]
+},
+{
+  id: "xu-huong-phat-trien-khu-do-thi-ben-vung-tai-viet-nam-va-dinh-huong-cua-hung-thai-property",
+  title: "Xu hướng phát triển khu đô thị bền vững tại Việt Nam và định hướng của Hưng Thái Property",
+  image: "https://drive.google.com/file/d/1YKoVz0dzqRQapcjt0eBPHXYtBIK8YjEP/view?usp=drive_link",
+  excerpt: "Sự dịch chuyển nhu cầu từ “mua một căn nhà” sang “lựa chọn một môi trường sống” đang đưa mô hình khu đô thị bền vững trở thành một hướng phát triển đáng chú ý tại Việt Nam.",
+  date: "15/07/2026",
+  href: "#",
+  contentBlocks: [
+    {
+      type: "text",
+      content: "Trong nhiều năm, người mua bất động sản thường bắt đầu từ những câu hỏi quen thuộc: vị trí ở đâu, diện tích bao nhiêu, giá bán thế nào. Nhưng khi đô thị hóa diễn ra nhanh hơn, áp lực lên hạ tầng, môi trường và chất lượng sống cũng lớn dần, cách một dự án được đánh giá đang thay đổi."
+    },
+    {
+      type: "text",
+      content: "Một căn nhà có thể đáp ứng nhu cầu sở hữu. Nhưng để tạo nên cuộc sống ổn định trong dài hạn, người mua còn quan tâm đến không gian xanh, khả năng kết nối, tiện ích thiết thực và cách toàn bộ khu vực được vận hành sau khi hình thành."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/1YKoVz0dzqRQapcjt0eBPHXYtBIK8YjEP/view?usp=drive_link",
+      alt: "Xu hướng phát triển khu đô thị bền vững tại Việt Nam"
+    },
+    {
+      type: "text",
+      content: "Sự thay đổi ấy đang đưa mô hình khu đô thị bền vững trở thành một hướng phát triển đáng chú ý tại Việt Nam."
+    },
+    {
+      type: "text",
+      content: "Đây không chỉ là câu chuyện của truyền thông. Chiến lược quốc gia về tăng trưởng xanh giai đoạn 2021–2030, tầm nhìn 2050 đã xác định tăng trưởng xanh là định hướng phát triển dài hạn; Kế hoạch hành động quốc gia sau đó tiếp tục cụ thể hóa các nhiệm vụ triển khai trong cùng giai đoạn."
+    },
+    {
+      type: "text",
+      content: "Đến cuối quý III/2025, Bộ Xây dựng cho biết cả nước đã có hơn 600 công trình xanh, với tổng diện tích gần 17 triệu m² sàn xây dựng. Dù con số này chưa đại diện cho toàn bộ thị trường, nó cho thấy các tiêu chí xanh và hiệu quả tài nguyên đang dần đi từ định hướng vào thực tế."
+    },
+    {
+      type: "text",
+      content: "Tuy nhiên, một khu đô thị bền vững không nên được hiểu đơn giản là dự án có nhiều cây xanh."
+    },
+    {
+      type: "text",
+      content: "Cây xanh là một phần quan trọng, nhưng chưa đủ. Bền vững còn nằm ở cách khu ở, không gian thương mại, giao thông nội khu, tiện ích công cộng và cảnh quan được tổ chức để hỗ trợ lẫn nhau. Một dự án có thể đẹp trên phối cảnh, nhưng nếu không gian chung khó sử dụng hoặc tiện ích không thể vận hành lâu dài, giá trị bền vững sẽ khó tồn tại."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/1pRS7h0EJs-xnLqHAGuD7otWXi25_Y4vp/view?usp=drive_link",
+      alt: "Tiêu chí xanh đi vào thực tế từ giai đoạn xây dựng đến vận hành"
+    },
+    {
+      type: "text",
+      content: "Bộ Xây dựng cũng tiếp cận đô thị xanh theo hướng rộng hơn: giảm phát thải, tăng không gian xanh, sử dụng vật liệu phù hợp và tiết kiệm năng lượng, nước, tài nguyên từ giai đoạn xây dựng đến vận hành. Điều đó cho thấy “xanh” không chỉ là hình thức cảnh quan, mà còn là cách một đô thị sử dụng nguồn lực và phục vụ con người trong suốt vòng đời của mình."
+    },
+    {
+      type: "text",
+      content: "Ở góc độ người mua, nhu cầu cũng đang dịch chuyển từ “mua một căn nhà” sang “lựa chọn một môi trường sống”."
+    },
+    {
+      type: "text",
+      content: "Họ không chỉ quan tâm căn nhà có bao nhiêu phòng, mà còn nhìn rộng hơn đến không gian cho trẻ nhỏ, người lớn tuổi, sự thuận tiện khi di chuyển và cách cộng đồng xung quanh sẽ hình thành. Với người mua để kinh doanh hoặc tích sản, câu hỏi còn mở rộng sang dòng người, sức sống thương mại và khả năng duy trì giá trị của toàn khu vực."
+    },
+    {
+      type: "text",
+      content: "Đây cũng là điểm Hưng Thái Property có thể đặt định hướng phát triển của mình trong một bối cảnh lớn hơn."
+    },
+    {
+      type: "text",
+      content: "Thay vì nhìn khu đô thị như tập hợp các sản phẩm bất động sản, doanh nghiệp cần tiếp cận dự án như một không gian sống có cấu trúc. Mỗi lựa chọn về vị trí, quy hoạch, sản phẩm và tiện ích phải trả lời được một nhu cầu cụ thể của khu vực, thay vì chỉ bổ sung những hạng mục đẹp về hình ảnh."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/1BwpoQ0aMD1TIOB9OIF8xLi26IZTTkZti/view?usp=drive_link",
+      alt: "Định hướng phát triển không gian sống có cấu trúc của Hưng Thái Property"
+    },
+    {
+      type: "text",
+      content: "Định hướng ấy có thể bắt đầu từ những nguyên tắc rõ ràng: lựa chọn vùng đất có nhu cầu sử dụng thật; tổ chức giao thông hợp lý; cân bằng giữa không gian riêng và không gian cộng đồng; ưu tiên tiện ích có khả năng vận hành; đồng thời tính đến giá trị an cư, kinh doanh và tích sản trong cùng một tổng thể."
+    },
+    {
+      type: "text",
+      content: "Tất nhiên, phát triển bền vững không thể được xác nhận chỉ bằng một tuyên bố."
+    },
+    {
+      type: "text",
+      content: "Một dự án tự gọi mình là “xanh” hay “đồng bộ” chưa đồng nghĩa with việc đã tạo ra chất lượng sống bền vững. Những giá trị ấy còn phải được kiểm chứng qua quy hoạch thực tế, chất lượng triển khai, khả năng vận hành và trải nghiệm của cộng đồng sau khi dự án đi vào sử dụng."
+    },
+    {
+      type: "text",
+      content: "Vì vậy, với Hưng Thái Property, khu đô thị bền vững không nên trở thành một lớp ngôn ngữ để làm đẹp hình ảnh thương hiệu. Phù hợp hơn, đó cần là hệ tiêu chuẩn để doanh nghiệp tự kiểm tra từng quyết định phát triển: dự án có phục vụ nhu cầu thật không, có sử dụng nguồn lực hợp lý không và những giá trị được tạo ra có còn ý nghĩa sau nhiều năm hay không."
+    },
+    {
+      type: "text",
+      content: "Khi người mua ngày càng tỉnh táo, thị trường sẽ không chỉ nhìn vào một dự án được giới thiệu hấp dẫn đến đâu. Điều còn lại lâu hơn là cách dự án vận hành, cách con người sống bên trong và khả năng vùng đất ấy tiếp tục tạo ra giá trị theo thời gian."
+    },
+    {
+      type: "text",
+      content: "Đó cũng là hướng Hưng Thái Property có thể theo đuổi: không chỉ phát triển những bất động sản để sở hữu, mà từng bước hình thành những không gian đô thị có thể sống, có thể sử dụng và bền vững cùng cộng đồng."
+    }
+  ]
+},
+{
+  id: "dong-hanh-cung-cu-dan-sau-ban-giao-cam-ket-dai-han-cua-hung-thai-property",
+  title: "Đồng hành cùng cư dân sau bàn giao – Cam kết dài hạn của Hưng Thái Property",
+  image: "https://drive.google.com/file/d/1hlCXGyUvtf7SRXLHIBDxZz_7iIypISJ3/view?usp=drive_link",
+  excerpt: "Với chủ đầu tư, bàn giao không nên là dấu chấm hết cho một dự án. Khi những căn nhà bắt đầu sáng đèn và cư dân chuyển về sinh sống, giá trị thực sự của dự án mới bước vào giai đoạn được kiểm chứng rõ ràng nhất.",
+  date: "15/07/2026",
+  href: "#",
+  contentBlocks: [
+    {
+      type: "text",
+      content: "Trong bất động sản, ngày bàn giao thường được xem là một cột mốc quan trọng. Với người mua, đó là thời điểm một tài sản trên giấy bắt đầu trở thành nơi để ở, để kinh doanh hoặc để hiện thực hóa những kế hoạch đã được chuẩn bị từ lâu. Nhưng với chủ đầu tư, bàn giao không nên là dấu chấm hết cho một dự án."
+    },
+    {
+      type: "text",
+      content: "Bởi khi những căn nhà bắt đầu sáng đèn, cư dân chuyển về sinh sống và các hoạt động thường nhật dần hình thành, giá trị thực sự của dự án mới bước vào giai đoạn được kiểm chứng rõ ràng nhất."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/1hlCXGyUvtf7SRXLHIBDxZz_7iIypISJ3/view?usp=drive_link",
+      alt: "Cam kết đồng hành dài hạn cùng cư dân sau bàn giao của Hưng Thái Property"
+    },
+    {
+      type: "text",
+      content: "Một khu đô thị có thể tạo ấn tượng bằng quy hoạch, kiến trúc hay hệ thống tiện ích trong thời điểm giới thiệu. Tuy nhiên, điều quyết định chất lượng sống lâu dài lại nằm ở cách các không gian ấy được vận hành, duy trì và phản hồi sau khi cư dân chính thức sử dụng."
+    },
+    {
+      type: "text",
+      content: "Đó cũng là lý do sự đồng hành sau bàn giao cần được nhìn như một phần trong trách nhiệm dài hạn của chủ đầu tư, thay vì một hoạt động hỗ trợ mang tính bổ sung."
+    },
+    {
+      type: "text",
+      content: "With cư dân, những vấn đề phát sinh sau bàn giao thường rất cụ thể. Đó có thể là chất lượng một hạng mục cần được kiểm tra, một khu vực cảnh quan cần được duy trì, hệ thống hạ tầng chung cần được vận hành ổn định hoặc một phản ánh cần được tiếp nhận và xử lý rõ ràng. Những việc tưởng như nhỏ ấy lại ảnh hưởng trực tiếp đến cảm nhận của cư dân về dự án và về doanh nghiệp đứng phía sau."
+    },
+    {
+      type: "text",
+      content: "Bởi vậy, đồng hành không chỉ là duy trì liên lạc. Điều quan trọng hơn là xây dựng một cơ chế để phản hồi của cư dân được lắng nghe, phân loại và giải quyết đúng phạm vi trách nhiệm."
+    },
+    {
+      type: "text",
+      content: "Trong quá trình đó, vai trò giữa chủ đầu tư, đơn vị vận hành và cộng đồng cư dân cũng cần được xác định minh bạch. Không phải mọi vấn đề phát sinh đều thuộc trách nhiệm trực tiếp của chủ đầu tư, nhưng một doanh nghiệp có trách nhiệm cần giúp cư dân hiểu rõ ai là đơn vị tiếp nhận, quy trình xử lý ra sao và quyền lợi của họ được bảo đảm ở mức độ nào."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/1q_9dpvtweV5bv0afAwLibhEuv5akJae0/view?usp=drive_link",
+      alt: "Cơ chế phối hợp rõ ràng giữa chủ đầu tư, đơn vị vận hành và cư dân"
+    },
+    {
+      type: "text",
+      content: "Sự rõ ràng ấy giúp hạn chế những kỳ vọng thiếu thực tế, đồng thời tạo ra nền tảng để các bên phối hợp thay vì chỉ gặp nhau khi vấn đề đã trở nên căng thẳng."
+    },
+    {
+      type: "text",
+      content: "Đồng hành sau bàn giao còn nằm ở cách những giá trị chung của dự án được gìn giữ theo thời gian."
+    },
+    {
+      type: "text",
+      content: "Một công viên chỉ thật sự có ý nghĩa khi tiếp tục được chăm sóc. Một tuyến đường nội khu chỉ tạo ra trải nghiệm tốt khi được duy trì sạch thế, an toàn và thuận tiện. Một hệ thống tiện ích chỉ có giá trị khi cư dân có thể sử dụng ổn định, thay vì tồn tại như một phần đẹp trên bản giới thiệu ban đầu."
+    },
+    {
+      type: "text",
+      content: "Vì thế, chất lượng của dự án không chỉ được đánh giá ở thời điểm công trình hoàn thiện, mà còn ở khả năng không gian ấy tiếp tục phục vụ cộng đồng sau nhiều năm."
+    },
+    {
+      type: "text",
+      content: "Tuy nhiên, “đồng hành cùng cư dân” cũng là một khái niệm dễ được sử dụng như một lời hứa đẹp. Nếu thiếu quy trình, thiếu phạm vi trách nhiệm và thiếu nguồn lực triển khai, cam kết dài hạn rất dễ dừng lại ở thông điệp truyền thông. Đây là điểm cần được nhìn nhận thẳng thắn."
+    },
+    {
+      type: "image",
+      src: "https://drive.google.com/file/d/1WBnm5ERDTOdTz7mgd-p9uyLbcVwJYmeW/view?usp=drive_link",
+      alt: "Duy trì chất lượng hạ tầng và cảnh quan dự án theo thời gian"
+    },
+    {
+      type: "text",
+      content: "Một chủ đầu tư không thể hứa sẽ giải quyết mọi vấn đề của cư dân. Nhưng có thể thể hiện trách nhiệm bằng cách không rời khỏi dự án ngay sau khi hoàn tất giao dịch; bằng việc theo dõi chất lượng bàn giao; phối hợp with đơn vị vận hành; duy trì kênh tiếp nhận thông tin và phản hồi các vấn đề thuộc phạm vi của mình một cách minh bạch."
+    },
+    {
+      type: "text",
+      content: "Với Hưng Thái Property, định hướng đồng hành sau bàn giao không nên được hiểu như một tuyên bố đã hoàn thành, mà là nguyên tắc cần được cụ thể hóa trong từng dự án."
+    },
+    {
+      type: "text",
+      content: "Trách nhiệm ấy bắt đầu từ chất lượng công trình, tiếp tục qua quá trình bảo hành, phối hợp vận hành và kéo dài đến cách doanh nghiệp giữ mối liên hệ với cộng đồng đã lựa chọn sản phẩm của mình. Khi một dự án dần hình thành nhịp sống, từng trải nghiệm của cư dân cũng trở thành một phần trong uy tín của thương hiệu."
+    },
+    {
+      type: "text",
+      content: "Ở góc độ rộng hơn, một cộng đồng cư dân ổn định không chỉ tạo nên giá trị sống. Đó còn là yếu tố góp phần duy trì sức sống thương mại, hình ảnh khu đô thị và giá trị tài sản trong dài hạn. Khi cư dân cảm thấy được tôn trọng, có tiếng nói và nhận được sự hỗ trợ đúng lúc, mối quan hệ giữa doanh nghiệp và khách hàng sẽ không còn dừng lại ở một hợp đồng mua bán."
+    },
+    {
+      type: "text",
+      content: "Ngày bàn giao vì thế không nên là thời điểm trách nhiệm khép lại."
+    },
+    {
+      type: "text",
+      content: "Đó là lúc một cam kết mới bắt đầu: cam kết để những gì đã được quy hoạch có thể đi vào đời sống, để những giá trị đã được giới thiệu tiếp tục được duy trì và để cộng đồng cư dân không cảm thấy mình bị bỏ lại sau giao dịch."
+    },
+    {
+      type: "text",
+      content: "Với Hưng Thái Property, hành trình phát triển một dự án chỉ thực sự trọn vẹn khi nơi đó không chỉ có những công trình được hoàn thành, mà còn có một cộng đồng đang sống, gắn bó và từng ngày tạo nên giá trị mới cho vùng đất."
+    },
+    {
+      type: "text",
+      content: "Bởi sau cùng, uy tín của một chủ đầu tư không chỉ được nhìn thấy trong ngày bàn giao. Nó còn được cảm nhận qua cách doanh nghiệp tiếp tục hiện diện khi cuộc sống thật sự bắt đầu."
     }
   ]
 }

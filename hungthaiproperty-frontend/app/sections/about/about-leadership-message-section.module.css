@@ -1,0 +1,121 @@
+.section {
+  padding: 12px 0 72px;
+  background: #fff;
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.header {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: #132238;
+  font-size: clamp(1.5rem, 2.7vw, 2.5rem);
+  line-height: 1.18;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.quote {
+  position: relative;
+  max-width: 90%;
+  margin: 34px auto 0;
+  padding: 0 42px 0 54px;
+}
+
+.quote::before {
+  content: "“";
+  position: absolute;
+  top: -16px;
+  left: 0;
+  color: rgba(197, 160, 89, 0.4);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(4.2rem, 8vw, 6.8rem);
+  line-height: 1;
+}
+
+.quote::after {
+  content: "”";
+  position: absolute;
+  right: 0;
+  bottom: -26px;
+  color: rgba(197, 160, 89, 0.26);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.8rem, 7vw, 6rem);
+  line-height: 1;
+}
+
+.quote p {
+  margin: 0;
+  color: #475569;
+  font-size: 1.13rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.95;
+}
+
+.quote p + p {
+  margin-top: 18px;
+}
+
+.signature {
+  max-width: 920px;
+  margin: 28px auto 0;
+  color: #132238;
+  font-size: 1.04rem;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1.7;
+  text-align: right;
+}
+
+.signature span {
+  display: block;
+  color: #9a7440;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 8px 0 56px;
+  }
+
+  .quote {
+    margin-top: 24px;
+    padding: 0 20px 0 34px;
+  }
+
+  .quote::before {
+    top: -10px;
+    font-size: 3.8rem;
+  }
+
+  .quote::after {
+    bottom: -18px;
+    font-size: 3.2rem;
+  }
+
+  .quote p {
+    font-size: 1.03rem;
+    line-height: 1.84;
+  }
+
+  .signature {
+    margin-top: 22px;
+    font-size: 0.98rem;
+    text-align: left;
+  }
+
+  .signature span {
+    font-size: 0.9rem;
+  }
+}

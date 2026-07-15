@@ -30,7 +30,7 @@ export const footerContactItems: FooterContactItem[] = [
   {
     id: "phone-email",
     label: "Số điện thoại & Email",
-    lines: ["093 861 9339", "contact@namsonland.vn"],
+    lines: ["097 727 5146", "hungthaipropertyjsc@gmail.com"],
   },
   {
     id: "hours",
@@ -45,15 +45,7 @@ export const footerLinkGroups: FooterLinkGroup[] = [
   title: "Dự án",
   links: [
     { id: "the-star-city", label: "The Star City", href: "#du-an" },
-    { id: "lumi-ha-noi", label: "Lumi Hà Nội", href: "#du-an" },
-    { id: "star-avenue", label: "Star-Avenue", href: "#du-an" },
-    { id: "the-sola-park", label: "The Sola Park", href: "#du-an" },
-    { id: "the-victoria", label: "The Victoria", href: "#du-an" },
-    {
-      id: "ha-noi-melody-residences",
-      label: "Hà Nội Melody Residences",
-      href: "#du-an",
-    },
+    { id: "star-avenue", label: "Star Avenue", href: "#du-an" },
   ],
 },
   {
@@ -63,6 +55,7 @@ export const footerLinkGroups: FooterLinkGroup[] = [
       { id: "gioi-thieu", label: "Giới thiệu", href: "/gioi-thieu" },
       { id: "du-an", label: "Dự án nổi bật", href: "/du-an-noi-bat" },
       { id: "dich-vu", label: "Lĩnh vực", href: "/linh-vuc" },
+      { id: "tin-tuc", label: "Tin tức", href: "/tin-tuc" },
       { id: "lien-he", label: "Liên hệ", href: "/lien-he" },
     ],
   },

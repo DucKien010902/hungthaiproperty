@@ -36,7 +36,10 @@ export function HomeVideo() {
     <section ref={sectionRef} id="video" className={styles.section}>
       <div className="site-shell">
         <p className={styles.lead}>
-          Lĩnh vực hoạt động và định hướng phát triển bền vững của Hưng Thái Property.
+          <span className={styles.leadHighlight}>
+            Lĩnh vực hoạt động và định hướng phát triển bền vững của Hưng Thái
+            Property.
+          </span>
         </p>
 
         <div className={styles.frame}>

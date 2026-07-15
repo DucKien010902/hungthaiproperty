@@ -7,10 +7,47 @@
   width: 100%;
 }
 
+.intro {
+  max-width: 860px;
+  margin: 0 auto 28px;
+  color: #2d3440;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.8;
+  text-align: left;
+  position: relative;
+  padding-left: 28px;
+}
+
+.intro::before,
+.intro::after {
+  position: absolute;
+  color: rgba(160, 126, 68, 0.75);
+  font-size: 46px;
+  line-height: 1;
+}
+
+.intro::before {
+  content: "“";
+  top: -2px;
+  left: 0;
+}
+
+.intro::after {
+  content: "”";
+  right: -8px;
+  bottom: -12px;
+}
+.companyName {
+  color: #c5a059;
+  font-weight: 800;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
+  max-width: 1160px;
+  margin: 0 auto;
 }
 
 .card {
@@ -21,6 +58,7 @@
   padding: 16px;
   background: #fff;
   border: 1px solid rgba(24, 35, 53, 0.08);
+  border-radius: 0;
   box-shadow: 0 10px 24px rgba(31, 27, 18, 0.06);
   transition:
     transform 180ms ease,
@@ -57,6 +95,25 @@
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+  }
+
+  .intro {
+    margin-bottom: 22px;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.75;
+    text-align: left;
+    padding-left: 22px;
+  }
+
+  .intro::before,
+  .intro::after {
+    font-size: 36px;
+  }
+
+  .intro::after {
+    right: 0;
+    bottom: -10px;
   }
 
   .card {

@@ -2,16 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 
 import styles from "./home-header.module.css";
 
 const navItems = [
   { label: "Trang chủ", href: "/" },
   { label: "Giới thiệu", href: "/gioi-thieu" },
-  // { label: "Dự án nổi bật", href: "/du-an-noi-bat" },
+  { label: "Dự án nổi bật", href: "/du-an-noi-bat" },
   { label: "Lĩnh vực", href: "/linh-vuc" },
   { label: "Đối tác", href: "/doi-tac" },
   { label: "Tin tức", href: "/tin-tuc" },
@@ -58,31 +58,18 @@ export function HomeHeader() {
         <Link
           href="/"
           className={styles.logoCard}
-          aria-label="Nam Sơn Land"
+          aria-label="Hưng Thái Property"
           onClick={() => setIsMobileMenuOpen(false)}
         >
-          <span className={styles.logoShiner}>
-            <Image
-              src="/Logo-1.png"
-              alt="Nam Sơn Land"
-              width={156}
-              height={156}
-              quality={100}
-              className={styles.logoImage}
-              priority
-            />
-            <motion.span
-              className={styles.logoSweep}
-              aria-hidden="true"
-              animate={{ backgroundPositionX: ["220%", "-120%"] }}
-              transition={{
-                duration: 8,
-                ease: "easeInOut",
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "reverse",
-              }}
-            />
-          </span>
+          <Image
+            src="/Logo-1.png"
+            alt="Hưng Thái Property"
+            width={156}
+            height={156}
+            quality={100}
+            className={styles.logoImage}
+            priority
+          />
         </Link>
 
         <nav className={styles.nav} aria-label="Điều hướng chính">
@@ -105,9 +92,9 @@ export function HomeHeader() {
             })}
           </div>
 
-          <a href="tel:+84938619339" className={styles.hotline}>
+          <a href="tel:+84977275146" className={styles.hotline}>
             <span>Liên hệ:</span>
-            <strong>093 861 9339</strong>
+            <strong>097 727 5146</strong>
           </a>
 
           <button

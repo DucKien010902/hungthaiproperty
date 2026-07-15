@@ -24,8 +24,8 @@
 .title {
   margin: 0;
   color: #132238;
-  font-size: clamp(2rem, 3.2vw, 3rem);
-  line-height: 1.1;
+  font-size: clamp(1.5rem, 2.7vw, 2.5rem);
+  line-height: 1.18;
   font-weight: 800;
   letter-spacing: -0.04em;
 }
@@ -44,15 +44,20 @@
 .content p {
   margin: 0;
   color: #475569;
-  font-size: 1.02rem;
-  font-weight: 500;
+  font-size: 1.08rem;
+  font-weight: 600;
   line-height: 1.95;
+  max-width: 90%;
+  margin: auto;
 }
 
 .content p + p {
   margin-top: 18px;
 }
-
+.companyName {
+  color: #c5a059;
+  font-weight: 800;
+}
 .media {
   margin-top: 34px;
   overflow: hidden;
@@ -95,7 +100,7 @@
   }
 
   .content p {
-    font-size: 0.97rem;
+    font-size: 1.02rem;
     line-height: 1.82;
   }
 

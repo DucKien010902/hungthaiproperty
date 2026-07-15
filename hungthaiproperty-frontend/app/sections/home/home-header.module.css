@@ -1,11 +1,8 @@
 .header {
   --header-height: 78px;
-  --header-height-scrolled: var(--header-height);
-  --logo-size-expanded: 156px;
-  --logo-size-scrolled: 78px;
+  --logo-size: var(--header-height);
   --header-side-gap: 36px;
-  --logo-left-offset: 15%;
-  --current-logo-size: var(--logo-size-expanded);
+  --logo-left-offset: 12%;
 
   position: fixed;
   inset: 0 0 auto;
@@ -23,8 +20,6 @@
 }
 
 .scrolled {
-  --current-logo-size: var(--logo-size-scrolled);
-
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 14px 38px rgba(15, 23, 42, 0.1);
 }
@@ -48,15 +43,7 @@
     0
     var(--header-side-gap)
     0
-    calc(var(--logo-left-offset) + var(--current-logo-size) + 40px);
-
-  transition:
-    min-height 220ms ease,
-    padding 220ms ease;
-}
-
-.scrolled .nav {
-  min-height: var(--header-height-scrolled);
+    calc(var(--logo-left-offset) + var(--logo-size) + 28px);
 }
 
 .logoCard {
@@ -64,78 +51,21 @@
   top: 0;
   left: var(--logo-left-offset);
 
-  width: var(--logo-size-expanded);
-  height: var(--logo-size-expanded);
-  padding: 0;
+  width: var(--logo-size);
+  height: var(--logo-size);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   z-index: 45;
-
-  background: #fff;
-  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.16);
-
-  transition:
-    width 220ms ease,
-    height 220ms ease,
-    box-shadow 220ms ease;
-}
-
-.scrolled .logoCard {
-  width: var(--logo-size-scrolled);
-  height: var(--logo-size-scrolled);
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
-}
-
-.logoShiner {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  isolation: isolate;
 }
 
 .logoImage {
-  position: relative;
-  z-index: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-.logoSweep {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-
-  background-repeat: no-repeat;
-  background-size: 260% 100%;
-  background-image: linear-gradient(
-    100deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.55) 45%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(255, 255, 255, 0.55) 55%,
-    transparent 70%
-  );
-
-  mask-image: url("/Logo-1.png");
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
-
-  -webkit-mask-image: url("/Logo-1.png");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
-
-  mix-blend-mode: screen;
-  filter: brightness(1.3);
 }
 
 .links {
@@ -300,7 +230,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .header {
-    transition: none;
+    will-change: auto;
   }
 }
 
@@ -317,9 +247,7 @@
   }
 
   .nav {
-    padding-left: calc(
-      var(--logo-left-offset) + var(--current-logo-size) + 20px
-    );
+    padding-left: calc(var(--logo-left-offset) + var(--logo-size) + 20px);
   }
 
   .links {
@@ -335,10 +263,7 @@
 @media (max-width: 980px) {
   .header {
     --header-height: 78px;
-    --header-height-scrolled: var(--header-height);
-    --logo-size-expanded: var(--header-height);
-    --logo-size-scrolled: var(--header-height);
-    --current-logo-size: var(--header-height);
+    --logo-size: var(--header-height);
     --header-side-gap: 18px;
     --logo-left-offset: 28px;
   }
@@ -350,14 +275,7 @@
       0
       var(--header-side-gap)
       0
-      calc(var(--logo-left-offset) + var(--current-logo-size) + 15px);
-  }
-
-  .logoCard,
-  .scrolled .logoCard {
-    width: var(--header-height);
-    height: var(--header-height);
-    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.1);
+      calc(var(--logo-left-offset) + var(--logo-size) + 15px);
   }
 
   .links {
@@ -376,10 +294,7 @@
 @media (max-width: 640px) {
   .header {
     --header-height: 78px;
-    --header-height-scrolled: var(--header-height);
-    --logo-size-expanded: var(--header-height);
-    --logo-size-scrolled: var(--header-height);
-    --current-logo-size: var(--header-height);
+    --logo-size: var(--header-height);
     --header-side-gap: 12px;
     --logo-left-offset: 12px;
   }
@@ -391,7 +306,7 @@
       0
       var(--header-side-gap)
       0
-      calc(var(--logo-left-offset) + var(--current-logo-size) + 10px);
+      calc(var(--logo-left-offset) + var(--logo-size) + 10px);
   }
 
   .mobileMenu {
