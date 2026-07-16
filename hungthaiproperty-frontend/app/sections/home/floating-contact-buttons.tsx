@@ -24,7 +24,7 @@ const contactButtons = [
   },
   {
     id: "phone",
-    href: "tel:0938619339",
+    href: "tel:0977275146",
     label: "Gọi ngay",
     className: styles.phone,
     icon: (

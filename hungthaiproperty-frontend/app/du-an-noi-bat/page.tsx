@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getAllProjects, getProjectById } from "../lib/content-api";
 import { FloatingContactButtons } from "../sections/home/floating-contact-buttons";
 import { HomeContact } from "../sections/home/home-contact";
+import { ProjectDetailMotion } from "../sections/projects/project-detail-motion";
 import { ProjectFactsSection } from "../sections/projects/project-facts-section";
 import { ProjectsCatalogSection } from "../sections/projects/projects-catalog-section";
 import { ProjectSpotlightSection } from "../sections/projects/project-spotlight-section";
@@ -42,10 +43,10 @@ export default async function FeaturedProjectsPage({
         <main>
           <PageBanner title={project ? project.title : "DỰ ÁN"} />
           {project ? (
-            <>
+            <ProjectDetailMotion key={project.id}>
               <ProjectSpotlightSection project={project} />
               <ProjectFactsSection project={project} />
-            </>
+            </ProjectDetailMotion>
           ) : (
             <ProjectsCatalogSection currentPage={currentPage} projects={projects} />
           )}

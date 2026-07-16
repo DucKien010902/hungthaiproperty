@@ -20,7 +20,7 @@ export const homeIntroItems: HomeIntroItem[] = [
   {
     title: "SỨ MỆNH",
     description:
-      "Giá trị đích thực là tiêu chuẩn xuyên suốt trong từng quyết định đầu tư của Hưng Thái Property – từ lựa chọn vị trí, hoạch định quy hoạch, kiểm soát chất lượng xây dựng đến minh bạch pháp lý và đồng hành cùng khách hàng sau bàn giao. Chúng tôi tạo ra những sản phẩm phục vụ thực chất nhu cầu an cư, kinh doanh và đầu tư dài hạn – giá trị được cảm nhận bằng trải nghiệm sống thực tế ",
+      "Giá trị đích thực là tiêu chuẩn xuyên suốt trong từng quyết định đầu tư của Hưng Thái Property – từ lựa chọn vị trí, hoạch định quy hoạch, kiểm soát chất lượng xây dựng đến minh bạch pháp lý và đồng hành cùng khách hàng sau bàn giao. Chúng tôi tạo ra những sản phẩm phục vụ thực chất nhu cầu an cư, kinh doanh và đầu tư dài hạn – giá trị được cảm nhận bằng trải nghiệm sống thực tế.",
     href: "/gioi-thieu",
     iconKey: "mission-handshake",
   },

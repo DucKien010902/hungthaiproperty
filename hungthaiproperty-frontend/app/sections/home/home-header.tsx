@@ -6,12 +6,20 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { featuredProjects } from "../../data/home-featured-projects";
 import styles from "./home-header.module.css";
 
 const navItems = [
   { label: "Trang chủ", href: "/" },
   { label: "Giới thiệu", href: "/gioi-thieu" },
-  { label: "Dự án nổi bật", href: "/du-an-noi-bat" },
+  {
+    label: "Dự án nổi bật",
+    href: "/du-an-noi-bat",
+    children: featuredProjects.map((project) => ({
+      label: project.title,
+      href: project.href,
+    })),
+  },
   { label: "Lĩnh vực", href: "/linh-vuc" },
   { label: "Đối tác", href: "/doi-tac" },
   { label: "Tin tức", href: "/tin-tuc" },
@@ -79,15 +87,49 @@ export function HomeHeader() {
                 item.href === "/"
                   ? pathname === "/"
                   : pathname === item.href || pathname.startsWith(`${item.href}/`);
+              const hasChildren = Boolean(item.children?.length);
 
               return (
-                <Link
+                <div
                   key={item.href}
-                  href={item.href}
-                  className={`${styles.link} ${isActive ? styles.linkActive : ""}`}
+                  className={`${styles.navItem} ${
+                    hasChildren ? styles.navItemWithDropdown : ""
+                  }`}
                 >
-                  {item.label}
-                </Link>
+                  {hasChildren ? (
+                    <>
+                      <button
+                        type="button"
+                        className={`${styles.link} ${styles.dropdownTrigger} ${
+                          isActive ? styles.linkActive : ""
+                        }`}
+                      >
+                        {item.label}
+                        <span className={styles.dropdownCaret} aria-hidden="true" />
+                      </button>
+                      <div className={styles.dropdownMenu}>
+                        <div className={styles.dropdownPanel}>
+                          {item.children?.map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              className={styles.dropdownLink}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className={`${styles.link} ${isActive ? styles.linkActive : ""}`}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </div>
               );
             })}
           </div>
@@ -135,18 +177,44 @@ export function HomeHeader() {
               item.href === "/"
                 ? pathname === "/"
                 : pathname === item.href || pathname.startsWith(`${item.href}/`);
+            const hasChildren = Boolean(item.children?.length);
 
             return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`${styles.mobileLink} ${
-                  isActive ? styles.mobileLinkActive : ""
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
+              <div key={item.href} className={styles.mobileNavItem}>
+                {hasChildren ? (
+                  <>
+                    <span
+                      className={`${styles.mobileLink} ${
+                        isActive ? styles.mobileLinkActive : ""
+                      }`}
+                    >
+                      {item.label}
+                    </span>
+                    <div className={styles.mobileSubmenu}>
+                      {item.children?.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className={styles.mobileSubLink}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className={`${styles.mobileLink} ${
+                      isActive ? styles.mobileLinkActive : ""
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
             );
           })}
         </div>

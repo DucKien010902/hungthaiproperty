@@ -18,6 +18,10 @@ export function ProjectSpotlightSection({
   const hasMultipleImages = project.images.length > 1;
 
   useEffect(() => {
+    setCurrentImageIndex(0);
+  }, [project.id]);
+
+  useEffect(() => {
     if (!hasMultipleImages) return;
 
     const intervalId = window.setInterval(() => {
