@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { ChangeEvent, ReactNode } from "react";
 
+import { getDriveImageUrl } from "@/app/lib/drive-image";
 import styles from "./admin-dashboard.module.css";
 
 export function Field({
@@ -143,6 +144,7 @@ export function ArrayRow({
 
 function PreviewButton({ href, label }: { href: string; label: string }) {
   const [isOpen, setIsOpen] = useState(false);
+  const previewSrc = getDriveImageUrl(href);
 
   useEffect(() => {
     if (!isOpen) {
@@ -211,7 +213,7 @@ function PreviewButton({ href, label }: { href: string; label: string }) {
               ×
             </button>
 
-            <img className={styles.imagePreviewAsset} src={href} alt={label} />
+            <img className={styles.imagePreviewAsset} src={previewSrc} alt={label} />
           </div>
         </div>
       ) : null}

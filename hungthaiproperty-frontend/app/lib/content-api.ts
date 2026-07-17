@@ -15,7 +15,7 @@ import type {
 import type { FeaturedProject, NewsArticle } from "./content-types";
 import { getNewsArticleHref, getProjectHref } from "./content-routes";
 
-const DEFAULT_API_BASE_URL = "http://localhost:5002/api";
+const DEFAULT_API_BASE_URL = "http://localhost:5003/api";
 const DEFAULT_CONTENT_SOURCE = "api";
 
 type ContentSourceMode = "api" | "mock";

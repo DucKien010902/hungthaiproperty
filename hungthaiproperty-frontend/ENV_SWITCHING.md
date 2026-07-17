@@ -5,7 +5,7 @@ File Next.js dang doc la `.env.local`.
 Mac dinh hien tai:
 
 ```env
-NEXT_PUBLIC_API_BASE_URL=http://localhost:5002/api
+NEXT_PUBLIC_API_BASE_URL=http://localhost:5003/api
 NEXT_PUBLIC_CONTENT_SOURCE=api
 ```
 

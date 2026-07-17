@@ -44,9 +44,7 @@ export function HomeHero() {
       {slides.map((slide, index) => (
         <div
           key={slide.image}
-          className={`${styles.slide} ${
-            index === activeIndex ? styles.active : ""
-          }`}
+          className={`${styles.slide} ${index === activeIndex ? styles.active : ""}`}
         >
           <img src={slide.image} alt="" className={styles.slideImage} />
         </div>
@@ -81,9 +79,7 @@ export function HomeHero() {
               <button
                 key={slide.image}
                 type="button"
-                className={`${styles.dot} ${
-                  index === activeIndex ? styles.activeDot : ""
-                }`}
+                className={`${styles.dot} ${index === activeIndex ? styles.activeDot : ""}`}
                 aria-label={`Đi tới ảnh ${index + 1}`}
                 aria-pressed={index === activeIndex}
                 onClick={() => setActiveIndex(index)}

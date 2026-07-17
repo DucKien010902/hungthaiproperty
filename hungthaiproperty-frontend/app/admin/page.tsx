@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { AdminDashboard } from "../sections/admin/admin-dashboard";
 
 export const metadata: Metadata = {
-  title: "Admin Nam Sơn Land",
+  title: "Admin Hưng Thái Property",
   robots: {
     index: false,
     follow: false,

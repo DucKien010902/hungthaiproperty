@@ -1,6 +1,6 @@
 import type { FeaturedProject, NewsArticle } from "./content-types";
 
-const DEFAULT_API_BASE_URL = "http://localhost:5002/api";
+const DEFAULT_API_BASE_URL = "http://localhost:5003/api";
 const ADMIN_TOKEN_STORAGE_KEY = "namsonland_admin_token";
 
 export type AdminRole = "super_admin" | "admin";

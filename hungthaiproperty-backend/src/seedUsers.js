@@ -6,8 +6,8 @@ import User from "./models/User.model.js";
 async function run() {
   await connectDB();
 
-  const email = process.env.ADMIN_EMAIL || "admin@namsonland.vn";
-  const password = process.env.ADMIN_PASSWORD || "namsonland";
+  const email = process.env.ADMIN_EMAIL || "admin@hungthaiproperty.vn";
+  const password = process.env.ADMIN_PASSWORD || "hungthaiproperty";
   const passwordHash = await bcrypt.hash(password, 10);
 
   await User.updateOne(

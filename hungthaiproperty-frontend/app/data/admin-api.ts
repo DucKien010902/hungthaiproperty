@@ -18,8 +18,8 @@ export type AdminContentPayload = {
 };
 
 export const mockAdminUser: AdminUser = {
-  id: "namson-admin",
-  name: "Admin Nam Sơn",
+  id: "hungthai-admin",
+  name: "Admin Hưng Thái",
   role: "super_admin",
 };
 

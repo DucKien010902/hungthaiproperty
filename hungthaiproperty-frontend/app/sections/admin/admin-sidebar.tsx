@@ -24,7 +24,7 @@ export function AdminSidebar({
         <div className={styles.brandBlock}>
           <span>NS</span>
           <div>
-            <strong>Nam Sơn Admin</strong>
+            <strong>Hưng Thái Admin</strong>
             <small>{user.role === "super_admin" ? "Super admin" : "Admin"}</small>
           </div>
         </div>
