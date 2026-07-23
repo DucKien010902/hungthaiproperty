@@ -1,7 +1,6 @@
 import { featuredProjects } from "../data/home-featured-projects";
 import {
   featuredNews as mockFeaturedNews,
-  getDriveDirectLink,
   getNewsArticleById as getMockNewsArticleById,
   newsArticles,
   secondaryNews as mockSecondaryNews,
@@ -14,6 +13,7 @@ import type {
 } from "./backend-contract";
 import type { FeaturedProject, NewsArticle } from "./content-types";
 import { getNewsArticleHref, getProjectHref } from "./content-routes";
+import { getDriveImageUrl } from "./drive-image";
 
 const DEFAULT_API_BASE_URL = "http://localhost:5003/api";
 const DEFAULT_CONTENT_SOURCE = "api";
@@ -120,7 +120,7 @@ function normalizeProject(project: FeaturedProject): FeaturedProject {
     ...project,
     href: project.href?.trim() || getProjectHref(project.id),
     images: Array.isArray(project.images)
-      ? project.images.filter(Boolean).map(getDriveDirectLink)
+      ? project.images.filter(Boolean).map(getDriveImageUrl)
       : [],
   };
 }
@@ -128,14 +128,14 @@ function normalizeProject(project: FeaturedProject): FeaturedProject {
 function normalizeArticle(article: NewsArticle): NewsArticle {
   return {
     ...article,
-    image: getDriveDirectLink(article.image),
+    image: getDriveImageUrl(article.image),
     href: article.href?.trim() || getNewsArticleHref(article.id),
     contentBlocks: Array.isArray(article.contentBlocks)
       ? article.contentBlocks.map((block) =>
           block.type === "image"
             ? {
                 ...block,
-                src: getDriveDirectLink(block.src),
+                src: getDriveImageUrl(block.src),
               }
             : block,
         )

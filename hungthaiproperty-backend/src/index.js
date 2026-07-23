@@ -62,7 +62,7 @@ app.use((err, req, res, next) => {
 connectDB()
   .then(() => {
     app.listen(PORT, () => {
-      console.log(`Nam Sơn Land API đang chạy tại http://localhost:${PORT}`);
+      console.log(`Hưng Thái Property API đang chạy tại http://localhost:${PORT}`);
     });
   })
   .catch((error) => {

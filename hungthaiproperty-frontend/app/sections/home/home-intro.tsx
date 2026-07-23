@@ -67,7 +67,7 @@ export function HomeIntro() {
             ease: [0.16, 1, 0.3, 1],
           }}
         >
-          <p className={styles.summaryEyebrow}>A Happy Approach to Real Estate Sales</p>
+          {/* <p className={styles.summaryEyebrow}>A Happy Approach to Real Estate Sales</p> */}
           <p className={styles.summaryText}>
             <span className={styles.summaryHighlight}>
               CÔNG TY CỔ PHẦN ĐẦU TƯ HƯNG THÁI PROPERTY

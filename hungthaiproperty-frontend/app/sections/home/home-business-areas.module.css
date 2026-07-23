@@ -47,14 +47,16 @@
 
 .cardImageLink {
   display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
   flex-shrink: 0;
 }
 
 .cardImage {
   display: block;
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
   filter: saturate(0.96);
   box-shadow: 0 16px 32px rgba(18, 32, 56, 0.12);
 }

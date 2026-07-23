@@ -23,7 +23,7 @@ export default async function Home() {
         <main>
           <HomeHero />
           <HomeIntro />
-          <HomeVideo />
+          {/* <HomeVideo /> */}
           <HomeFeaturedProjects projects={projects} />
           <HomeBusinessAreas />
           <HomePartners />

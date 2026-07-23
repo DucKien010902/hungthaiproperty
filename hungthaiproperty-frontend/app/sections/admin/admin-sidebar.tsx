@@ -22,7 +22,7 @@ export function AdminSidebar({
     <aside className={styles.sidebar} aria-label="Admin sidebar">
       <div className={styles.sidebarInner}>
         <div className={styles.brandBlock}>
-          <span>NS</span>
+          <span>HT</span>
           <div>
             <strong>Hưng Thái Admin</strong>
             <small>{user.role === "super_admin" ? "Super admin" : "Admin"}</small>
